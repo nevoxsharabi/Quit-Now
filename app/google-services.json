@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1050691698759",
+    "firebase_url": "https://quit-now-4b3c3-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "quit-now-4b3c3",
+    "storage_bucket": "quit-now-4b3c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050691698759:android:aa3279cedf85be7c2eb162",
+        "android_client_info": {
+          "package_name": "dev.NevoSharabi.quitnow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050691698759-da8mrqvpmcp4rgo6cae85gk8gb6b4sn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApjs5YYhbNcZrfQtQIqwg652SVp_zlrAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050691698759-da8mrqvpmcp4rgo6cae85gk8gb6b4sn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

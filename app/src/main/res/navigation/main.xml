@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/progress_item">
+
+    <fragment
+        android:id="@+id/progress_item"
+        android:name="dev.NevoSharabi.quitnow.progress.ProgressFragment"
+        android:label="Progress"
+        tools:layout="@layout/fragment_progress" />
+
+    <fragment
+        android:id="@+id/rewards_item"
+        android:name="dev.NevoSharabi.quitnow.progress.RewardsFragment"
+        android:label="Rewards"/>
+<!--        tools:layout="@layout/fragment_rewards"-->
+
+
+    <fragment
+        android:id="@+id/store_item"
+        android:name="dev.NevoSharabi.quitnow.store.StoreFragment"
+        android:label="Store"
+        tools:layout="@layout/fragment_store" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/gift_bag_item"-->
+<!--        android:name="com.example.Stopi.store.GiftBagFragment"-->
+<!--        android:label="Gift Bag"-->
+<!--        tools:layout="@layout/fragment_gift_bag" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/settings_item"-->
+<!--        android:name="com.example.Stopi.profile.SettingsFragment"-->
+<!--        android:label="Settings"-->
+<!--        tools:layout="@layout/fragment_settings" />-->
+
+</navigation>

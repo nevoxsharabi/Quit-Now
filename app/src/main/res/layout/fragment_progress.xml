@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:background="@drawable/background"
+    tools:context=".progress.ProgressFragment">
+
+    <com.furkanakdemir.surroundcardview.SurroundCardView
+        android:id="@+id/progress_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/svc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingStart="10dp">
+
+            <TextView
+                android:id="@+id/time_free_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Time smoke free"
+                android:textSize="40dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/time_passed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text"
+                android:layout_below="@+id/time_free_title"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </com.furkanakdemir.surroundcardview.SurroundCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/reset_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ButtonDesign"
+        android:backgroundTint="#B30000"
+        android:text="reset progress"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_timer" />
+
+
+
+    <com.furkanakdemir.surroundcardview.SurroundCardView
+        android:id="@+id/random_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/svc"
+        app:layout_constraintHeight_min="120dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dummy_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+>
+        <TextView
+            android:id="@+id/random_lbl_tip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:text="Read everything you can on the effects of smoking and how other people have quit"
+            android:textSize="20dp" />
+
+    </com.furkanakdemir.surroundcardview.SurroundCardView>
+
+    <RelativeLayout
+        android:id="@+id/dummy_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/smoker_future_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/dummy_layout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dummy_layout" />
+
+    <RelativeLayout
+        android:id="@+id/dummy_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dummy_layout" />
+
+    <FrameLayout
+        android:id="@+id/smoker_past_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dummy_layout2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
