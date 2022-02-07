@@ -4,10 +4,11 @@ public interface KEYS {
 
     String  LOG_TAG                 = "-QuitNow-";
 
-    String  USERS_REF               = "https://quit-now-4b3c3-default-rtdb.firebaseio.com/Users";
+    String  USERS_REF               = "https://quit-now-4b3c3-default-rtdb.europe-west1.firebasedatabase.app/Users";
     String  TIPS_REF                = "https://fumi-app-default-rtdb.firebaseio.com/Tips";
     String  REWARDS_INFO_REF        = "https://fumi-app-default-rtdb.firebaseio.com/Rewards_Info";
     String  STORE_REF               = "https://fumi-app-default-rtdb.firebaseio.com/Store_items";
+    String  CHATS_REF               = "https://fumi-app-default-rtdb.firebaseio.com/Chats";
     String  GIFT_BAGS_REF           = "https://fumi-app-default-rtdb.firebaseio.com/GiftBags";
 
     String  STORE_PICS_REF          = "gs://fumi-app.appspot.com/store_pics/";

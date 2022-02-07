@@ -62,7 +62,6 @@
 
 
     <com.furkanakdemir.surroundcardview.SurroundCardView
-        android:id="@+id/random_tip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/svc"
@@ -73,11 +72,11 @@
 
 >
         <TextView
-            android:id="@+id/random_lbl_tip"
+            android:id="@+id/progress_money"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:text="Read everything you can on the effects of smoking and how other people have quit"
+            android:text="money saved:"
             android:textSize="20dp" />
 
     </com.furkanakdemir.surroundcardview.SurroundCardView>

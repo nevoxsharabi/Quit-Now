@@ -1,8 +1,6 @@
 package dev.NevoSharabi.quitnow.profile;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,18 +11,14 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.*;
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
 import dev.NevoSharabi.quitnow.dateBase.DBupdater;
 import dev.NevoSharabi.quitnow.tools.App;
-import dev.NevoSharabi.quitnow.tools.Utils;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Currency;
 
 
 public class SettingsFragment extends Fragment {
@@ -119,7 +113,7 @@ public class SettingsFragment extends Fragment {
 
         user_name.getEditText().setText("" + user.getName());
         years_smoked.getEditText().setText("" + user.getYearsSmoked());
-        cigs_per_day.getEditText().setText("" + user.getCigsPerDay());
+        cigs_per_day.getEditText().setText("" + user.getCigsPerWeek());
         price_per_pack.getEditText().setText("" + user.getPricePerPack());
         cigs_per_pack.getEditText().setText("" + user.getCigsPerPack());
         currency.setText("" + user.getCurrencySymbol());
@@ -148,7 +142,7 @@ public class SettingsFragment extends Fragment {
 
             user.setName(name)
                     .setYearsSmoked(yearsSmoked)
-                    .setCigsPerDay(cigsPerDay)
+                    .setCigsPerWeek(cigsPerDay)
                     .setPricePerPack(pricePerPack)
                     .setCigsPerPack(cigsPerPack);
 

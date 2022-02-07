@@ -20,6 +20,7 @@ import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.Dialogs;
 import dev.NevoSharabi.quitnow.tools.GenericDialog;
 import dev.NevoSharabi.quitnow.tools.OnFragmentTransaction;
+import dev.NevoSharabi.quitnow.tools.Utils;
 //import com.example.Stopi.dataBase.DBupdater;
 //import com.example.Stopi.profile.User;
 
@@ -37,10 +38,11 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class ProgressFragment extends Fragment {
+    private Utils utils;
 
     private View view;
     private TextView time_lbl_passed;
-    private TextView random_lbl_tip;
+    private TextView progress_money;
     private TextView user_main_goal;
     private MaterialButton reset_progress;
 
@@ -85,7 +87,7 @@ public class ProgressFragment extends Fragment {
 
 //        pastData = SmokerDataFragment.newInstance(Section.Before);
 //        futureData = SmokerDataFragment.newInstance(Section.After);
-
+        utils = Utils.get();
         dbReader = DBreader.get();
 //        tips = dbReader.getTips();
         user = dbReader.getUser();
@@ -107,7 +109,7 @@ public class ProgressFragment extends Fragment {
     private void findViews() {
         time_lbl_passed = view.findViewById(R.id.time_passed);
         reset_progress = view.findViewById(R.id.reset_progress);
-
+         progress_money = view.findViewById(R.id.progress_money);
 
     }
 
@@ -142,6 +144,7 @@ public class ProgressFragment extends Fragment {
             internetChecker.postDelayed(runnable, 1000);
             user = DBreader.get().getUser();
             if (user == null) return;
+           progress_money.setText("Money saved: " + utils.formatNumber(user.moneySaved(), "##.#") + " "+ user.getCurrencySymbol());
             updateProgressClock();
         }
     };

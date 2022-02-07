@@ -13,6 +13,8 @@ import dev.NevoSharabi.quitnow.login.SharedPrefs;
 import dev.NevoSharabi.quitnow.store.Store;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class App extends Application {
@@ -28,7 +30,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Users");
         context         = getApplicationContext();
         myToast         = Toast.makeText(context, "", Toast.LENGTH_SHORT);
         connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

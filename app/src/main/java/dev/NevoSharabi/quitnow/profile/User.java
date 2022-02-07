@@ -10,20 +10,37 @@ import dev.NevoSharabi.quitnow.tools.KEYS;
 public class User {
     private String  uid = "";
     private String  name = "";
+    private double  yearsSmoked = 0;
     private String  currencySymbol = "";
+    private int cigsPerWeek = 0;
+    private double  pricePerPack = 0;
+    private long    dateStoppedSmoking;
 
-    private int     cigsPerDay = 0;
     private int     cigsPerPack = 1;
     private int     coins = 0;
-    //private int     highScore = 0;
+
+    public User(String uid) {
+        this.uid = uid;
+    }
+    public User(String uid,String name) {
+        this.uid = uid;
+        this.name = name;
+    }
+
+    public User(){ }
+
+    public User(String uid, String name, double yearsSmoked, int cigsPerWeek, double pricePerPack, long dateStoppedSmoking) {
+        this.uid = uid;
+        this.name = name;
+        this.yearsSmoked = yearsSmoked;
+        this.cigsPerWeek = cigsPerWeek;
+        this.pricePerPack = pricePerPack;
+        this.dateStoppedSmoking = dateStoppedSmoking;
+    }
 
     private double  cigsSinceQuit = 0;
-    private double  yearsSmoked = 0;
-    private double  pricePerPack = 0;
-
-    private long    dateStoppedSmoking;
     private long    loggedToday = -1;
-    private long    lastSeen;
+
 
     private KEYS.Status status = KEYS.Status.Offline;
 
@@ -34,12 +51,12 @@ public class User {
     public String getUserId() {
         return uid;
     }
-    public User(){ }
+
 
 
     //========================================= before stopi
 
-    public double totalCigsSmoked(){ return (yearsSmoked * KEYS.DAYS_IN_YEAR * cigsPerDay) + cigsSinceQuit; }
+    public double totalCigsSmoked(){ return (yearsSmoked * KEYS.DAYS_IN_YEAR * cigsPerWeek) + cigsSinceQuit; }
 
     public double moneyWasted(){ return totalCigsSmoked()*cigCost(); }
 
@@ -47,7 +64,7 @@ public class User {
 
     //========================================= after stopi
 
-    public double cigsNotSmoked(){ return (TimeUnit.MILLISECONDS.toHours(getRehabDuration())/24) * cigsPerDay; }
+    public double cigsNotSmoked(){ return (TimeUnit.MILLISECONDS.toHours(getRehabDuration())/24) * cigsPerWeek/7; }
 
     public double moneySaved(){ return cigsNotSmoked()*cigCost();}
 
@@ -81,7 +98,7 @@ public class User {
 
     public User setPricePerPack(double pricePerPack) { this.pricePerPack = pricePerPack; return this; }
 
-    public User setCigsPerDay(int cigsPerDay) { this.cigsPerDay = cigsPerDay; return this; }
+    public User setCigsPerWeek(int cigsPerWeek) { this.cigsPerWeek = cigsPerWeek; return this; }
 
     public User setCigsPerPack(int cigsPerPack) { this.cigsPerPack = cigsPerPack; return this; }
 
@@ -90,8 +107,6 @@ public class User {
     public User setDateStoppedSmoking(long dateStoppedSmoking) { this.dateStoppedSmoking = dateStoppedSmoking; return this; }
 
     public User setLoggedToday(long loggedToday) { this.loggedToday = loggedToday; return this;}
-
-    public User setLastSeen(long lastSeen) { this.lastSeen = lastSeen; return this; }
 
     public User setBoughtItems(HashMap<String,StoreItem> boughtItems) { this.boughtItems = boughtItems; return this; }
 
@@ -109,7 +124,7 @@ public class User {
 
     public double getPricePerPack() { return pricePerPack; }
 
-    public int getCigsPerDay() { return cigsPerDay; }
+    public int getCigsPerWeek() { return cigsPerWeek; }
 
     public int getCigsPerPack() { return cigsPerPack; }
 
@@ -119,7 +134,6 @@ public class User {
 
     public long getLoggedToday() { return loggedToday; }
 
-    public long getLastSeen() { return lastSeen; }
 
     public long getRehabDuration(){ return Calendar.getInstance().getTimeInMillis() - dateStoppedSmoking; }
 

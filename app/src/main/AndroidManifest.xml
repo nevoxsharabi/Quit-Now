@@ -37,7 +37,7 @@
 
 
         <activity
-            android:name=".profile.ProfileActivity"
+            android:name=".profile.CreateProfileActivity"
             android:label="ProfileActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.QuitNow.NoActionBar" />

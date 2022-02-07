@@ -2,7 +2,6 @@ package dev.NevoSharabi.quitnow;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -21,8 +20,6 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,19 +28,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.navigation.ui.NavigationUI;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
-import dev.NevoSharabi.quitnow.dateBase.DBupdater;
 import dev.NevoSharabi.quitnow.login.SharedPrefs;
+import dev.NevoSharabi.quitnow.profile.CreateProfileActivity;
 import dev.NevoSharabi.quitnow.profile.OnProfileUpdate;
-import dev.NevoSharabi.quitnow.profile.ProfileActivity;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.store.OnCoinsChanged;
 import dev.NevoSharabi.quitnow.tools.App;
-import dev.NevoSharabi.quitnow.tools.Dialogs;
 import dev.NevoSharabi.quitnow.tools.KEYS;
 import dev.NevoSharabi.quitnow.tools.OnFragmentTransaction;
 import dev.NevoSharabi.quitnow.tools.Utils;
@@ -92,38 +85,33 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         //Utils.get().onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         createSignInIntent();
 
-//        dbReader = DBreader.get();
-//        user = dbReader.getUser();
-////
-//        DBupdater.get().updateStatus(KEYS.Status.Online);
-//   //     Dialogs.get().addContext(this);
+        dbReader = DBreader.get();
+        user = dbReader.getUser();
+
+
 //
 //        if(SharedPrefs.get().isFirstLogin()) {
-//            Utils.get().myStartActivity(this, ProfileActivity.class);
+//            Utils.get().myStartActivity(this, CreateProfileActivity.class);
 //            return;
 //        }
 //
+
         findViews();
         initDrawer();
-//
-//        if(!initServerConnection()) return;
-//s
-        setUserData();
-        checkFirstLogin();
 
-//        //test
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//
-//        myRef.setValue("Hello, World!");
+        //test
+
+//      FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("Users");
+//        myRef.child(u1.getName()).setValue(u1);
 
     }
     public void createSignInIntent() {
-        // [START auth_fui_create_intent]
-        // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.PhoneBuilder().build(),
@@ -144,8 +132,8 @@ public class MainActivity extends AppCompatActivity implements
             // Successfully signed in
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             assert user != null;
-//            Log.i("info", "User ID: " + user.getUid());
-//            Log.i("info", "User Display Name: " + user.getDisplayName());
+           Log.i("info", "User ID: " + user.getUid());
+           Log.i("info", "User Display Name: " + user.getDisplayName());
         } else {
             // Sign in failed. If response is null the user canceled the
             // sign-in flow using the back button. Otherwise check
@@ -154,22 +142,7 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    public void signOut() {
-        AuthUI.getInstance()
-                .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // ...
-                    }
-                });
-    }
-//    private void rewardDailyLogin(){
-//        user.setLoggedToday(Calendar.getInstance().getTimeInMillis());
-//        user.incrementCoins(1500);
-//        updateWallet();
-//        Dialogs.get().rewardDialog().show();
-//        DBupdater.get().updateUser(user);
-//    }
+
 
     private boolean initServerConnection() {
         DBreader dbReader = DBreader.get();
@@ -185,13 +158,6 @@ public class MainActivity extends AppCompatActivity implements
         return true;
     }
 
-    private void checkFirstLogin() {
-        long daysPassed = TimeUnit.MILLISECONDS.toDays(
-                Calendar.getInstance().getTimeInMillis() - user.getLoggedToday());
-        if(daysPassed < 1 && user.getLoggedToday() != -1) return;
-
-        //rewardDailyLogin();
-    }
     private void findViews() {
         drawerLayout        = findViewById(R.id.drawerLayout);
         nav_view            = findViewById(R.id.nav_view);
@@ -212,11 +178,7 @@ public class MainActivity extends AppCompatActivity implements
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> main_lbl_title.setText(destination.getLabel()));
     }
 
-    private void setUserData() {
-        drawer_lbl_userName .setText(user.getName());
-        user_coins          .setText("Coins - "+ user.getCoins());
-        dbReader.readPicNoCache(KEYS.PROFILE, drawer_user_pic, user.getUid());
-    }
+
     @Override
     public void updateWallet() { // called when item is bought in store or when daily login performed
         user_coins.setText("Coins - " + dbReader.getUser().getCoins());
@@ -224,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void updateProfile(User user) {
-        dbReader.get().readPicNoCache(KEYS.PROFILE, drawer_user_pic,user.getUid());
+       // dbReader.get().readPicNoCache(KEYS.PROFILE, drawer_user_pic,user.getUid());
         drawer_lbl_userName.setText(user.getName());
     }
 

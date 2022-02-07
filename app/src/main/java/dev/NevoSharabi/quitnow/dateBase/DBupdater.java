@@ -4,6 +4,9 @@ import android.net.Uri;
 
 import dev.NevoSharabi.quitnow.profile.*;
 import dev.NevoSharabi.quitnow.tools.*;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.Calendar;
@@ -38,7 +41,11 @@ public class DBupdater {
      * saves user in database
      * @param user user for update (not for logged user)
      */
-    public void updateUser(User user){ Refs.getUsersRef().child(user.getUid()).setValue(user); }
+    public void updateUser(User user){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Users");
+        myRef.child(user.getUid()).setValue(user);
+    }
 
     /**
      * saves current logged user in database
@@ -54,7 +61,6 @@ public class DBupdater {
      * saves giftBag in db ref after changes in bag
      * @param user
      */
-    public void updateGiftBag(User user){ Refs.getGiftBagsRef().child(user.getUid()).setValue(user.getBoughtItems()); }
 
     /**
      * updates user goal in database
@@ -74,26 +80,7 @@ public class DBupdater {
         User user = DBreader.get().getUser();
         if(user == null) return;
         user.setStatus(status);
-        if(status.equals(KEYS.Status.Offline))
-            user.setLastSeen(Calendar.getInstance().getTimeInMillis());
         DBupdater.get().saveLoggedUser();
     }
-
-    //=============================
-
-    /**
-     * saves photo in database storage by user id
-     */
-    public void uploadImage(Uri filePathUri, OnProfileUpdate onProfileUpdate) {
-        if (filePathUri == null) return;
-        StorageReference ref = Refs.getStorageRef(KEYS.FULL_PROFILE_PIC_URL + App.getLoggedUser().getUid()+".jpg");
-        App.toast("Uploading Photo!");
-        ref.putFile(filePathUri)
-                .addOnSuccessListener(taskSnapshot -> {
-                    App.toast("Image Uploaded");
-                    onProfileUpdate.updateProfile(DBreader.get().getUser());
-                }).addOnFailureListener(e -> App.toast("Upload failed"));
-    }
-
 
 }
