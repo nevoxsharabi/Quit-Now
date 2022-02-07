@@ -30,10 +30,10 @@
 <!--        android:label="Gift Bag"-->
 <!--        tools:layout="@layout/fragment_gift_bag" />-->
 
-<!--    <fragment-->
-<!--        android:id="@+id/settings_item"-->
-<!--        android:name="com.example.Stopi.profile.SettingsFragment"-->
-<!--        android:label="Settings"-->
-<!--        tools:layout="@layout/fragment_settings" />-->
+    <fragment
+        android:id="@+id/settings_item"
+        android:name="dev.NevoSharabi.quitnow.profile.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>

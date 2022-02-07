@@ -8,7 +8,6 @@ public interface KEYS {
     String  TIPS_REF                = "https://fumi-app-default-rtdb.firebaseio.com/Tips";
     String  REWARDS_INFO_REF        = "https://fumi-app-default-rtdb.firebaseio.com/Rewards_Info";
     String  STORE_REF               = "https://fumi-app-default-rtdb.firebaseio.com/Store_items";
-    String  CHATS_REF               = "https://fumi-app-default-rtdb.firebaseio.com/Chats";
     String  GIFT_BAGS_REF           = "https://fumi-app-default-rtdb.firebaseio.com/GiftBags";
 
     String  STORE_PICS_REF          = "gs://fumi-app.appspot.com/store_pics/";

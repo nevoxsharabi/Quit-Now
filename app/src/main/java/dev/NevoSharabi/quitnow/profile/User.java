@@ -31,6 +31,9 @@ public class User {
 
     //=========================================
 
+    public String getUserId() {
+        return uid;
+    }
     public User(){ }
 
 

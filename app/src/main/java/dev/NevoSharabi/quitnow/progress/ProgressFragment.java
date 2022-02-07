@@ -14,6 +14,12 @@ import androidx.fragment.app.Fragment;
 
 import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.*;
+import dev.NevoSharabi.quitnow.dateBase.DBreader;
+import dev.NevoSharabi.quitnow.profile.User;
+import dev.NevoSharabi.quitnow.tools.App;
+import dev.NevoSharabi.quitnow.tools.Dialogs;
+import dev.NevoSharabi.quitnow.tools.GenericDialog;
+import dev.NevoSharabi.quitnow.tools.OnFragmentTransaction;
 //import com.example.Stopi.dataBase.DBupdater;
 //import com.example.Stopi.profile.User;
 
@@ -40,131 +46,103 @@ public class ProgressFragment extends Fragment {
 
 //    private SmokerDataFragment pastData;
 //    private SmokerDataFragment futureData;
-//    private OnFragmentTransaction onFragmentTransaction;
-//
-//    private DBreader dbReader;
-//    private List tips;
-//    private User user;
-//
-//    private GenericDialog genericDialog;
-//    private View.OnClickListener dialogListener = v -> {
-//        try {
-//            User user = DBreader.get().getUser();
-//            if (user == null) {
-//                genericDialog.dismiss();
-//                return;
-//            }
+    private OnFragmentTransaction onFragmentTransaction;
+
+    private DBreader dbReader;
+    private List tips;
+    private User user;
+
+    private GenericDialog genericDialog;
+    private View.OnClickListener dialogListener = v -> {
+        try {
+            User user = DBreader.get().getUser();
+            if (user == null) {
+                genericDialog.dismiss();
+                return;
+            }
 //            int cigsSmoked = Integer.parseInt(genericDialog.getETtext(R.id.reset_amount));
 //            if (user.updateTotalCigs(cigsSmoked))
 //                DBupdater.get().updateUser(user);
 //            pastData.updateViewData();
 //            genericDialog.dismiss();
-//        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
 //            genericDialog.setETerror(R.id.reset_amount, "Please enter a number");
-//        }
-//    };
-//
-//    //====================================================
-//
-//    @Override
-//    public void onAttach(@NonNull Context context) {
-//        super.onAttach(context);
-//        onFragmentTransaction = (OnFragmentTransaction) context;
-//    }
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        view = inflater.inflate(R.layout.fragment_progress, container, false);
-//
+        }
+    };
+
+    //====================================================
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        onFragmentTransaction = (OnFragmentTransaction) context;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_progress, container, false);
+
 //        pastData = SmokerDataFragment.newInstance(Section.Before);
 //        futureData = SmokerDataFragment.newInstance(Section.After);
-//
-//        dbReader = DBreader.get();
+
+        dbReader = DBreader.get();
 //        tips = dbReader.getTips();
-//        user = dbReader.getUser();
-//
-//        findViews();
-//        setListeners();
-//
-//        internetChecker.postDelayed(runnable, 200);
-//
-//        if (!App.isNetworkAvailable() || user == null) return view;
-//
-//        loadRandomTip();
-//
-//        user_main_goal.setText(user.getGoal());
-//
-//        return view;
-//    }
-//
-//    //====================================================
-//
-//    private void findViews() {
-//        time_lbl_passed = view.findViewById(R.id.time_passed);
-//        random_lbl_tip = view.findViewById(R.id.random_lbl_tip);
-//        user_main_goal = view.findViewById(R.id.user_lbl_goal);
-//        reset_progress = view.findViewById(R.id.reset_progress);
-//
-//        onFragmentTransaction.setFragmentToView(pastData, R.id.smoker_past_data);
-//        onFragmentTransaction.setFragmentToView(futureData, R.id.smoker_future_data);
-//    }
-//
-//    private void setListeners() {
-//        random_lbl_tip.setOnClickListener(v -> loadRandomTip());
-//
-//        user_main_goal.setOnClickListener(v ->
-//                Dialogs.get().goalDialog(user_main_goal).show()
-//        );
-//
-//        reset_progress.setOnClickListener(v -> {
-//            genericDialog = Dialogs.get().resetDialog(dialogListener);
-//            genericDialog.show();
-//        });
-//    }
-//
-//    //====================================================
-//
-//    private void loadRandomTip() {
-//        if (tips.size() < 1) {
-//            dbReader.readListData(KEYS.TIPS_REF, tips, String.class);
-//            return;
-//        }
-//        int rand = new Random().nextInt(tips.size());
-//        String tip = (String) tips.get(rand);
-//        random_lbl_tip.setText(tip);
-//    }
-//
-//    //====================================================
-//
-//    private void updateProgressClock() {
-//        time_lbl_passed.setText(formatDuration());
-//    }
-//
-//    private String formatDuration() {
-//        long duration = user.getRehabDuration();
-//        long years = TimeUnit.MILLISECONDS.toDays(duration) / 365;
-//        long months = (TimeUnit.MILLISECONDS.toDays(duration) % 365) / 30;
-//        long days = TimeUnit.MILLISECONDS.toDays(duration) % 30;
-//        long hours = TimeUnit.MILLISECONDS.toHours(duration) % 24;
-//        long minutes = TimeUnit.MILLISECONDS.toMinutes(duration) % 60;
-//        long seconds = TimeUnit.MILLISECONDS.toSeconds(duration) % 60;
-//
-//        return String.format("%2d-y %2d-m %2d-d %02d:%02d:%02d", years, months, days, hours, minutes, seconds);
-//    }
-//
-//    //====================================================
-//
-//    private Handler internetChecker = new Handler();
-//    private Runnable runnable = new Runnable() {
-//        @Override
-//        public void run() {
-//            internetChecker.postDelayed(runnable, 1000);
-//            user = DBreader.get().getUser();
-//            if (user == null) return;
-//            if (!pastData.isDataSet()) pastData.updateViewData();
-//            futureData.updateViewData();
-//            updateProgressClock();
-//        }
-//    };
+        user = dbReader.getUser();
+
+        findViews();
+
+        internetChecker.postDelayed(runnable, 200);
+
+        if (!App.isNetworkAvailable() || user == null) return view;
+
+
+
+
+        return view;
+    }
+
+    //====================================================
+
+    private void findViews() {
+        time_lbl_passed = view.findViewById(R.id.time_passed);
+        reset_progress = view.findViewById(R.id.reset_progress);
+
+
+    }
+
+
+
+
+
+    //====================================================
+
+    private void updateProgressClock() {
+        time_lbl_passed.setText(formatDuration());
+    }
+
+    private String formatDuration() {
+        long duration = user.getRehabDuration();
+        long years = TimeUnit.MILLISECONDS.toDays(duration) / 365;
+        long months = (TimeUnit.MILLISECONDS.toDays(duration) % 365) / 30;
+        long days = TimeUnit.MILLISECONDS.toDays(duration) % 30;
+        long hours = TimeUnit.MILLISECONDS.toHours(duration) % 24;
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(duration) % 60;
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(duration) % 60;
+
+        return String.format("%2d-y %2d-m %2d-d %02d:%02d:%02d", years, months, days, hours, minutes, seconds);
+    }
+
+    //====================================================
+
+    private Handler internetChecker = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            internetChecker.postDelayed(runnable, 1000);
+            user = DBreader.get().getUser();
+            if (user == null) return;
+            updateProgressClock();
+        }
+    };
 }

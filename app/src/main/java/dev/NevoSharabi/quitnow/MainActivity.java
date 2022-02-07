@@ -106,13 +106,13 @@ public class MainActivity extends AppCompatActivity implements
 //            return;
 //        }
 //
-//        findViews();
-//        initDrawer();
+        findViews();
+        initDrawer();
 //
 //        if(!initServerConnection()) return;
-//
-//        setUserData();
-//        checkFirstLogin();
+//s
+        setUserData();
+        checkFirstLogin();
 
 //        //test
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
