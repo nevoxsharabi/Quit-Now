@@ -34,6 +34,7 @@
     <!-- Login -->
     <string name="enter_code">Enter Code</string>
     <string name="phone_number">Phone Number</string>
+    <string name="cigarettes_per_week">Cigarettes Per Week</string>
 
 
 </resources>

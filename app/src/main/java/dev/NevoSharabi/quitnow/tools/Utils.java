@@ -5,12 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-//import com.example.Stopi.R;
-//import com.example.Stopi.dataBase.DBreader;
-//import com.example.Stopi.profile.login.SharedPrefs;
 import com.furkanakdemir.surroundcardview.SurroundCardView;
 //import com.github.drjacky.imagepicker.ImagePicker;
 
@@ -39,12 +33,8 @@ public class Utils {
             instance = new Utils();
     }
 
-    //====================================================
 
-    /**
-     * generates uniqueChatId for user chat
-     * @param userId second userId for the chat (not logged firebase user)
-     */
+
 
 
     //====================================================
@@ -72,14 +62,6 @@ public class Utils {
 
     //====================================================
 
-//    public int getDotByStatus(KEYS.Status status){
-//        if (status.equals(KEYS.Status.Online)) {
-//            return R.drawable.ic_online_dot;
-//        } else
-//            return R.drawable.ic_offline_dot;
-//    }
-
-    //====================================================
 
     /**
      * plays sound

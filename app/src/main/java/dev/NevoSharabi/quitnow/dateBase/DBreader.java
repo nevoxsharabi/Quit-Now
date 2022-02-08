@@ -1,5 +1,6 @@
 package dev.NevoSharabi.quitnow.dateBase;
 
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -106,6 +107,7 @@ public class DBreader {
      */
     public void readPic(int key, ImageView imageView, String fileName){
         StorageReference ref = photoPathRef(key,fileName);
+        Log.d("info",ref.getPath());
         Glide.with(App.getAppContext())
                 .load(ref)
                 .placeholder(R.drawable.img_default_pic)

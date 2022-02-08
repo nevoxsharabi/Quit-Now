@@ -92,7 +92,7 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Cigarettes Per Day"
+            android:hint="@string/cigarettes_per_week"
             android:inputType="number"
             android:textColor="?colorOnSecondary" />
 

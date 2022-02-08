@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,7 +47,7 @@ public class RewardsFragment extends Fragment {
         init_views();
 
         rewardsAdapter  = new RewardsAdapter(rewards);
-        rewards_list    .setLayoutManager(new LinearLayoutManager( getContext()) );
+        rewards_list    .setLayoutManager(new GridLayoutManager(getContext(),2 ));
         rewards_list    .setAdapter(rewardsAdapter);
 
         if(App.isNetworkAvailable()) createRewards(rewards);

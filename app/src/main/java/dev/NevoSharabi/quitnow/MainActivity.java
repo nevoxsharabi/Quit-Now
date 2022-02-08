@@ -64,15 +64,16 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onStop() {
         super.onStop();
-       DBupdater.get().updateStatus(KEYS.Status.Offline);
+        DBupdater.get().updateStatus();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-       // Dialogs.get().addContext(this);
-        DBupdater.get().updateStatus(KEYS.Status.Online);
+        Dialogs.get().addContext(this);
     }
+
+
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
             new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {

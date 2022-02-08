@@ -85,10 +85,9 @@ public class DBupdater {
      * updates user status in database
      * on login and logout
      */
-    public void updateStatus(KEYS.Status status){
+    public void updateStatus(){
         User user = DBreader.get().getUser();
         if(user == null) return;
-        user.setStatus(status);
         DBupdater.get().saveLoggedUser();
     }
 

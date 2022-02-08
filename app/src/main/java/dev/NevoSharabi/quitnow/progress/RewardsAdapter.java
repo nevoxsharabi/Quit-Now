@@ -60,7 +60,7 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.RewardsV
         holder.progressBar  .setProgress(time);
         holder.rewardText   .setText(reward.getRewardName());
         holder.reward_info  .setText(reward_info != null ? reward_info : "");
-        holder.unlock_date  .setText(text);
+        //holder.unlock_date  .setText(text);
     }
 
     //====================================================
