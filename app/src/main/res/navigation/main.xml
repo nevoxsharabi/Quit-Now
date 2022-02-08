@@ -24,11 +24,11 @@
         android:label="Store"
         tools:layout="@layout/fragment_store" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/gift_bag_item"-->
-<!--        android:name="com.example.Stopi.store.GiftBagFragment"-->
-<!--        android:label="Gift Bag"-->
-<!--        tools:layout="@layout/fragment_gift_bag" />-->
+    <fragment
+        android:id="@+id/gift_bag_item"
+        android:name="dev.NevoSharabi.quitnow.store.GiftBagFragment"
+        android:label="Gift Bag"
+        tools:layout="@layout/fragment_gift_bag" />
 
     <fragment
         android:id="@+id/settings_item"

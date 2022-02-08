@@ -41,6 +41,7 @@ public class App extends Application {
         DBreader        .initReader();
         Utils           .initUtils();
         Store.initStore();
+        Dialogs         .initDialogs();
 
     }
 

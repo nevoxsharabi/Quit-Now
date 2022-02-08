@@ -18,6 +18,7 @@ public class User {
 
     private int     cigsPerPack = 1;
     private int     coins = 0;
+    private HashMap<String, StoreItem> boughtItems = new HashMap<>();
 
     public User(String uid) {
         this.uid = uid;
@@ -44,7 +45,6 @@ public class User {
 
     private KEYS.Status status = KEYS.Status.Offline;
 
-    private HashMap<String, StoreItem> boughtItems = new HashMap<>();
 
     //=========================================
 

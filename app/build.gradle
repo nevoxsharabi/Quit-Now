@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:20.0.2'
 
 
-    implementation "com.furkanakdemir:surroundcardview:1.0.1"
+
 
 
     implementation 'com.firebaseui:firebase-ui-database:4.3.2'

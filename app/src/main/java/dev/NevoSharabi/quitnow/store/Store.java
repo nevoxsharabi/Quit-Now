@@ -7,8 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
+import dev.NevoSharabi.quitnow.dateBase.DBupdater;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;
+import dev.NevoSharabi.quitnow.tools.KEYS;
 
 public class Store {
 
@@ -17,11 +19,11 @@ public class Store {
     private List<StoreItem> itemsList = new ArrayList<>();
 
     //=============================
-    //dont forget change this firebase
+
     public static void initStore(){
         if(instance == null) {
             instance = new Store();
-            DBreader.get().readListData("https://quit-now-4b3c3-default-rtdb.europe-west1.firebasedatabase.app/Store_items", instance.itemsList,StoreItem.class);
+            DBreader.get().readListData(KEYS.STORE_REF, instance.itemsList,StoreItem.class);
         }
     }
 
@@ -56,8 +58,23 @@ public class Store {
         }
         addStoreItem(user, item);
         user.reduceCoins(item.getPrice());
-
+        App.toast(item.getTitle() + " Bought!");
     }
+    public void sendGift(User userToGift, StoreItem itemToGift){
+        User loggedUser = DBreader.get().getUser();
+        addStoreItem(userToGift, itemToGift);
+        DBupdater dbUpdate =  DBupdater.get();
+        dbUpdate.updateGiftBag(userToGift);
+
+        if(itemToGift.getPrice() > 1)
+            itemToGift.reduceAmount();
+        else
+            loggedUser.getBoughtItems().remove(itemToGift.getTitle());
+        dbUpdate.updateGiftBag(loggedUser);
+
+        App.toast("Gift Sent!");
+    }
+
 
 }
 

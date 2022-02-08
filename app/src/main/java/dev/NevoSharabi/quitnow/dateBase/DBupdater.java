@@ -62,7 +62,7 @@ public class DBupdater {
      * saves giftBag in db ref after changes in bag
      * @param user
      */
-
+    public void updateGiftBag(User user){ Refs.getGiftBagsRef().child(user.getUid()).setValue(user.getBoughtItems()); }
     /**
      * updates user goal in database
      * and saves user object

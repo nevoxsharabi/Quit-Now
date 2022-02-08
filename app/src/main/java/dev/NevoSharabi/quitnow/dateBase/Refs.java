@@ -12,13 +12,13 @@ import dev.NevoSharabi.quitnow.tools.KEYS;
 
 public class Refs {
 
-
+    public static DatabaseReference getGiftBagsRef()        { return getDBref(KEYS.GIFT_BAGS_REF); }
     public static DatabaseReference getDBref(String url)    { return FirebaseDatabase.getInstance().getReferenceFromUrl(url); }
     public static DatabaseReference getLoggedUserRef()      { return getUsersRef().child(App.getLoggedUser().getUid()); }
     public static String getStorePicStoragePath(String fileName)     { return KEYS.STORE_PICS_REF + fileName.toLowerCase() + ".jpg"; }
     public static DatabaseReference getUsersRef1()           {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        return database.getReference("Store_items"); }
+        return database.getReference("GiftBags"); }
     public static DatabaseReference getUsersRef()           {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         return database.getReference("Users"); }

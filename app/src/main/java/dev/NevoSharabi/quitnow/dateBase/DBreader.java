@@ -10,15 +10,11 @@ import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.store.StoreItem;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.KEYS;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.signature.ObjectKey;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageReference;
+
 
 
 import java.util.ArrayList;
@@ -55,6 +51,9 @@ public class DBreader {
 
 
     public void readUserData() {
+//        StoreItem s1 = new StoreItem().setTitle("bamb").setPrice(100);
+//        Refs.getUsersRef1().child(App.getLoggedUser().getUid());
+//        Refs.getUsersRef1().child("8ERAWslc4vXLPYsRlRh4zj4t7uK2").child(s1.getTitle()).setValue(s1);
         Refs.getUsersRef().child(App.getLoggedUser().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
