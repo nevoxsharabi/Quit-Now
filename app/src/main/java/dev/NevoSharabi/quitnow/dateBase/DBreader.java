@@ -38,13 +38,18 @@ public class DBreader {
         }
     }
 
-
+    /**
+     * gets the singleton
+     */
     public static DBreader get() { return instance; }
 
 
     private void readData() {
         if (App.getLoggedUser() != null)
             get().readUserData();
+        for (int i = 1; i <14 ; i++) {
+            rewards_info.add("1" + i );
+        }
         //get().readListData(KEYS.REWARDS_INFO_REF, rewards_info, String.class);
     }
 
@@ -68,19 +73,20 @@ public class DBreader {
     }
 //
 //    //=========================================
-public void readListData(String Ref, List list, Class ObjectClass){
-    Refs.getDBref(Ref).addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            for (DataSnapshot snapshot: dataSnapshot.getChildren())
-                list.add(snapshot.getValue(ObjectClass));
-            App.log("readListData() - read list");
+    public void readListData(String Ref, List list, Class ObjectClass){
+        Refs.getDBref(Ref).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                    list.add(snapshot.getValue(ObjectClass));
+                App.log("readListData() - read list");
         }
 
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) { }
-    });
-}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+    }
+
     private StorageReference photoPathRef(int key, String fileName) {
         String ref = "";
         switch (key){

@@ -33,7 +33,12 @@ public class DBupdater {
     /**
      * deletes all data , emails and profile pic
      * @param Uid user firebase id
-     */
+     */public void deleteUserData(String Uid){
+        Refs.getUsersRef().child(Uid).removeValue();
+        Refs.getGiftBagsRef().child(Uid).removeValue();
+//        DBupdater.get().deleteProfilePic(Uid);
+    }
+
 
 
     //=============================
@@ -42,11 +47,14 @@ public class DBupdater {
      * saves user in database
      * @param user user for update (not for logged user)
      */
-    public void updateUser(User user){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Users");
-        myRef.child(user.getUid()).setValue(user);
-    }
+    public void updateUser(User user){ Refs.getUsersRef().child(user.getUid()).setValue(user); }
+
+//    public void updateUser(User user){
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("Users");
+//        myRef.child(user.getUid()).setValue(user);
+//    }
+
 
     /**
      * saves current logged user in database

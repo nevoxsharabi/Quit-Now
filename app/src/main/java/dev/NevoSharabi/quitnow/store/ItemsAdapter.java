@@ -73,7 +73,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.StoreViewHol
             return;
         }
         Store.get().buyItem(user, storeItem);
-        //DBupdater.get().updateGiftBag(user);
+        DBupdater.get().updateGiftBag(user);
         onCoinsChanged.updateWallet();
     }
 

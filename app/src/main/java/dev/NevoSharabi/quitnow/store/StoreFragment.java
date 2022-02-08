@@ -21,7 +21,7 @@ public class StoreFragment extends Fragment {
 
     private View view;
     private RecyclerView store_list;
-   private ItemsAdapter storeAdapter;
+    private ItemsAdapter storeAdapter;
 
     private List<StoreItem> store_items;
 
@@ -57,7 +57,7 @@ public class StoreFragment extends Fragment {
         store_list.setLayoutManager(new GridLayoutManager(getContext(),2));
         storeAdapter = new ItemsAdapter(store_items);
         storeAdapter.setClickListener(onCoinsChanged);
-       store_list.setAdapter(storeAdapter);
+        store_list.setAdapter(storeAdapter);
     }
 
     //====================================================

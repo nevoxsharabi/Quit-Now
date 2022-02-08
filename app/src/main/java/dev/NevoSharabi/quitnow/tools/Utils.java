@@ -102,8 +102,8 @@ public class Utils {
         activity        .finish();
     }
 
-    //====================================================
-//
+
+
 //    /**
 //     *   gets image from imagePicker in fragment
 //     */

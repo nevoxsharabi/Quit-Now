@@ -43,7 +43,7 @@ public class Store {
             userItems.get(item.getTitle()).incrementAmount();
         else {
             userItems.put(item.getTitle() ,
-                            new dev.NevoSharabi.quitnow.store.StoreItem()
+                            new StoreItem()
                             .setTitle(item.getTitle())
                             .setPrice(1));
         }

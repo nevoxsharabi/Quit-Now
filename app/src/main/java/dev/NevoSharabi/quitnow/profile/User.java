@@ -20,30 +20,14 @@ public class User {
     private int     coins = 0;
     private HashMap<String, StoreItem> boughtItems = new HashMap<>();
 
-    public User(String uid) {
-        this.uid = uid;
-    }
-    public User(String uid,String name) {
-        this.uid = uid;
-        this.name = name;
-    }
-
-    public User(){ }
-
-    public User(String uid, String name, double yearsSmoked, int cigsPerWeek, double pricePerPack, long dateStoppedSmoking) {
-        this.uid = uid;
-        this.name = name;
-        this.yearsSmoked = yearsSmoked;
-        this.cigsPerWeek = cigsPerWeek;
-        this.pricePerPack = pricePerPack;
-        this.dateStoppedSmoking = dateStoppedSmoking;
-    }
-
     private double  cigsSinceQuit = 0;
     private long    loggedToday = -1;
 
 
     private KEYS.Status status = KEYS.Status.Offline;
+    public User(){ }
+
+
 
 
     //=========================================
