@@ -21,18 +21,18 @@ public class StoreFragment extends Fragment {
 
     private View view;
     private RecyclerView store_list;
-   //private ItemsAdapter storeAdapter;
+   private ItemsAdapter storeAdapter;
 
-    private List<dev.NevoSharabi.quitnow.store.StoreItem> store_items;
+    private List<StoreItem> store_items;
 
-  //  private OnCoinsChanged onCoinsChanged;
+   private OnCoinsChanged onCoinsChanged;
 
     //====================================================
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-     //   onCoinsChanged = (OnCoinsChanged) context;
+        onCoinsChanged = (OnCoinsChanged) context;
     }
 
     @Override
@@ -55,9 +55,9 @@ public class StoreFragment extends Fragment {
     private void initViews() {
         store_items = Store.get().getItems();
         store_list.setLayoutManager(new GridLayoutManager(getContext(),2));
-//        storeAdapter = new ItemsAdapter(store_items);
-//        storeAdapter.setClickListener(onCoinsChanged);
-//        store_list.setAdapter(storeAdapter);
+        storeAdapter = new ItemsAdapter(store_items);
+        storeAdapter.setClickListener(onCoinsChanged);
+       store_list.setAdapter(storeAdapter);
     }
 
     //====================================================

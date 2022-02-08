@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements
 
         findViews();
         initDrawer();
+        if(!initServerConnection()) return;
 
         setUserData();
     }

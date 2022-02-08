@@ -3,6 +3,7 @@ package dev.NevoSharabi.quitnow.dateBase;
 import android.net.Uri;
 
 import dev.NevoSharabi.quitnow.profile.*;
+import dev.NevoSharabi.quitnow.store.StoreItem;
 import dev.NevoSharabi.quitnow.tools.*;
 
 import com.google.firebase.database.DatabaseReference;
