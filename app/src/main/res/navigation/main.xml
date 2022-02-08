@@ -14,8 +14,8 @@
     <fragment
         android:id="@+id/rewards_item"
         android:name="dev.NevoSharabi.quitnow.progress.RewardsFragment"
-        android:label="Rewards"/>
-<!--        tools:layout="@layout/fragment_rewards"-->
+        android:label="Rewards"
+        tools:layout="@layout/fragment_rewards"/>
 
 
     <fragment

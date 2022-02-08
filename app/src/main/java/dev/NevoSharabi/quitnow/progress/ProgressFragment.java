@@ -3,6 +3,7 @@ package dev.NevoSharabi.quitnow.progress;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,7 +145,7 @@ public class ProgressFragment extends Fragment {
             internetChecker.postDelayed(runnable, 1000);
             user = DBreader.get().getUser();
             if (user == null) return;
-           progress_money.setText("Money saved: " + utils.formatNumber(user.moneySaved(), "##.#") + " "+ user.getCurrencySymbol());
+           progress_money.setText("Money saved: " + utils.formatNumber(user.moneySaved(), "##.#") + " "+ "$");
             updateProgressClock();
         }
     };

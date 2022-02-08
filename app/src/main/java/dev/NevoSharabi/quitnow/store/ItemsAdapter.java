@@ -34,7 +34,7 @@
 //
 //    public ItemsAdapter(List<StoreItem> store_items){ this.storeItems = store_items; }
 //
-//   // public void setClickListener(OnCoinsChanged onCoinsChanged) { this.onCoinsChanged = onCoinsChanged; }
+//    public void setClickListener(OnCoinsChanged onCoinsChanged) { this.onCoinsChanged = onCoinsChanged; }
 //
 //    //====================================================
 //
@@ -48,32 +48,32 @@
 //        return new StoreViewHolder(view);
 //    }
 //
-////    @Override
-////    public void onBindViewHolder(StoreViewHolder holder, int position) {
-////        StoreItem storeItem         = storeItems.get(position);
-////        holder.store_item_title     .setText(storeItem.getTitle());
-////        holder.store_item_price     .setText(""+ storeItem.getPrice());
-////
-////        DBreader.get()      .readPic(KEYS.STORE,holder.store_item_photo, storeItem.getTitle());
+//    @Override
+//    public void onBindViewHolder(StoreViewHolder holder, int position) {
+//        StoreItem storeItem         = storeItems.get(position);
+//        holder.store_item_title     .setText(storeItem.getTitle());
+//        holder.store_item_price     .setText(""+ storeItem.getPrice());
 //
-////        if(onCoinsChanged != null)  // store fragment
-////            holder.svc              .setOnClickListener(v -> beginPurchase(storeItem));
-////        else                        // bought_items fragment
-////            holder.svc              .setOnClickListener(v -> Utils.get().onCardClick(holder.svc));
-////    }
+//        DBreader.get()      .readPic(KEYS.STORE,holder.store_item_photo, storeItem.getTitle());
 //
-////    private void beginPurchase(StoreItem storeItem){
-////        User user = DBreader.get().getUser();
-////        if(storeItem.getPrice() > user.getCoins()){
-////            App.toast("Not Enough Coins!");
-////            return;
-////        }
-////        Store.get().buyItem(user, storeItem);
-////        DBupdater.get().updateGiftBag(user);
-////        onCoinsChanged.updateWallet();
-////    }
+//        if(onCoinsChanged != null)  // store fragment
+//            holder.svc              .setOnClickListener(v -> beginPurchase(storeItem));
+//        else                        // bought_items fragment
+//            holder.svc              .setOnClickListener(v -> Utils.get().onCardClick(holder.svc));
+//    }
 //
-//    //====================================================
+//    private void beginPurchase(StoreItem storeItem){
+//        User user = DBreader.get().getUser();
+//        if(storeItem.getPrice() > user.getCoins()){
+//            App.toast("Not Enough Coins!");
+//            return;
+//        }
+//        Store.get().buyItem(user, storeItem);
+//        DBupdater.get().updateGiftBag(user);
+//        onCoinsChanged.updateWallet();
+//    }
+//
+//    ====================================================
 //
 //    public class StoreViewHolder extends RecyclerView.ViewHolder {
 //

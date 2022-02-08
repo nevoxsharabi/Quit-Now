@@ -40,9 +40,9 @@ public class RewardsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        view = inflater.inflate(R.layout.fragment_rewards, container, false);
+        view = inflater.inflate(R.layout.fragment_rewards, container, false);
 //
-//        init_views();
+        init_views();
 //
 //        rewardsAdapter  = new RewardsAdapter(rewards);
 //        rewards_list    .setLayoutManager(new LinearLayoutManager(getContext()));
@@ -56,8 +56,8 @@ public class RewardsFragment extends Fragment {
     //====================================================
 
     void init_views(){
-      //  rewards_list = view.findViewById(R.id.rewards_list);
-     //   rewards = new ArrayList<>();
+        rewards_list = view.findViewById(R.id.rewards_list);
+        //rewards = new ArrayList<>();
     }
 
     //====================================================

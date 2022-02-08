@@ -31,12 +31,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
+import dev.NevoSharabi.quitnow.dateBase.DBupdater;
 import dev.NevoSharabi.quitnow.login.SharedPrefs;
 import dev.NevoSharabi.quitnow.profile.CreateProfileActivity;
 import dev.NevoSharabi.quitnow.profile.OnProfileUpdate;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.store.OnCoinsChanged;
 import dev.NevoSharabi.quitnow.tools.App;
+import dev.NevoSharabi.quitnow.tools.Dialogs;
 import dev.NevoSharabi.quitnow.tools.KEYS;
 import dev.NevoSharabi.quitnow.tools.OnFragmentTransaction;
 import dev.NevoSharabi.quitnow.tools.Utils;
@@ -62,14 +64,14 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onStop() {
         super.onStop();
-       //DBupdater.get().updateStatus(KEYS.Status.Offline);
+       DBupdater.get().updateStatus(KEYS.Status.Offline);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-      //  Dialogs.get().addContext(this);
-     //   DBupdater.get().updateStatus(KEYS.Status.Online);
+       // Dialogs.get().addContext(this);
+        DBupdater.get().updateStatus(KEYS.Status.Online);
     }
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
@@ -83,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Utils.get().onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
@@ -104,12 +105,7 @@ public class MainActivity extends AppCompatActivity implements
         findViews();
         initDrawer();
 
-        //test
-
-//      FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("Users");
-//        myRef.child(u1.getName()).setValue(u1);
-
+        setUserData();
     }
     public void createSignInIntent() {
         List<AuthUI.IdpConfig> providers = Arrays.asList(
@@ -135,14 +131,15 @@ public class MainActivity extends AppCompatActivity implements
            Log.i("info", "User ID: " + user.getUid());
            Log.i("info", "User Display Name: " + user.getDisplayName());
         } else {
-            // Sign in failed. If response is null the user canceled the
-            // sign-in flow using the back button. Otherwise check
-            // response.getError().getErrorCode() and handle the error.
-            // ...
+
         }
     }
 
-
+    private void setUserData() {
+        drawer_lbl_userName .setText(user.getName());
+        user_coins          .setText("Coins - "+ user.getCoins());
+        //dbReader.get()      .readPicNoCache(KEYS.PROFILE, drawer_user_pic, user.getUid());
+    }
 
     private boolean initServerConnection() {
         DBreader dbReader = DBreader.get();

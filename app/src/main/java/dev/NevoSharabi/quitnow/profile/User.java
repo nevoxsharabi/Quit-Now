@@ -64,7 +64,7 @@ public class User {
 
     //========================================= after stopi
 
-    public double cigsNotSmoked(){ return (TimeUnit.MILLISECONDS.toHours(getRehabDuration())/24) * cigsPerWeek/7; }
+    public double cigsNotSmoked(){ return (TimeUnit.MILLISECONDS.toHours(getRehabDuration())) * cigsPerWeek/7/24; }
 
     public double moneySaved(){ return cigsNotSmoked()*cigCost();}
 
