@@ -64,33 +64,21 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onStop() {
         super.onStop();
-        DBupdater.get().updateStatus();
+        //DBupdater.get().updateStatus();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Dialogs.get().addContext(this);
+        //Dialogs.get().addContext(this);
     }
 
 
-    private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
-            new FirebaseAuthUIActivityResultContract(),
-            new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
-                @Override
-                public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
-                    onSignInResult(result);
-                }
-            }
-    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-
-        createSignInIntent();
 
         dbReader = DBreader.get();
         user = dbReader.getUser();
@@ -105,37 +93,11 @@ public class MainActivity extends AppCompatActivity implements
 
         findViews();
         initDrawer();
-        if(!initServerConnection()) return;
+       // if(!initServerConnection()) return;
 
         setUserData();
     }
-    public void createSignInIntent() {
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.PhoneBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build());
 
-        // Create and launch sign-in intent
-        Intent signInIntent = AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setAvailableProviders(providers)
-                .build();
-        signInLauncher.launch(signInIntent);
-        // [END auth_fui_create_intent]
-    }
-
-    private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
-        IdpResponse response = result.getIdpResponse();
-        if (result.getResultCode() == RESULT_OK) {
-            // Successfully signed in
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            assert user != null;
-           Log.i("info", "User ID: " + user.getUid());
-           Log.i("info", "User Display Name: " + user.getDisplayName());
-        } else {
-
-        }
-    }
 
     private void setUserData() {
         drawer_lbl_userName .setText(user.getName());

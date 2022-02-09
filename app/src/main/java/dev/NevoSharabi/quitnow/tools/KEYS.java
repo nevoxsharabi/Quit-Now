@@ -20,9 +20,7 @@ public interface KEYS {
     int     REWARDS_AMOUNT          = 13;
     int     DAYS_IN_YEAR            = 365;
     int     MINUTES_LOST_PER_CIG    = 11;
-    int     BALL_RADIUS             = 40;
 
-    float   REBOUND                 = 0.6f;
 
     enum Status { Online, Offline}
 
