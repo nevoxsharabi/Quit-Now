@@ -4,7 +4,7 @@ public interface KEYS {
 
     String  LOG_TAG                 = "-QuitNow-";
 
-    String  USERS_REF               = "https://quit-now-4b3c3-default-rtdb.europe-west1.firebasedatabase.app/Users/";
+    String  USERS_REF               = "https://quit-now-4b3c3-default-rtdb.europe-west1.firebasedatabase.app/Users";
     String  REWARDS_INFO_REF        = "https://fumi-app-default-rtdb.firebaseio.com/Rewards_Info";
     String  STORE_REF               = "https://quit-now-4b3c3-default-rtdb.europe-west1.firebasedatabase.app/Store_items";
     String  GIFT_BAGS_REF           = "https://quit-now-4b3c3-default-rtdb.europe-west1.firebasedatabase.app/GiftBags";

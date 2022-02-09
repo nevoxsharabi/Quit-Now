@@ -10,13 +10,17 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import dev.NevoSharabi.quitnow.MainActivity;
 import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
 import dev.NevoSharabi.quitnow.dateBase.DBupdater;
 import dev.NevoSharabi.quitnow.tools.App;
+import dev.NevoSharabi.quitnow.tools.Utils;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -89,6 +93,10 @@ public class SettingsFragment extends Fragment {
 
         update_btn.setOnClickListener(v -> updateUserData());
 
+        logout              .setOnClickListener(v -> {
+            Utils.get()     .myStartActivity(getActivity(), MainActivity.class);
+            FirebaseAuth.getInstance()     .signOut();
+        });
 
 //        currency.setOnClickListener(v -> Dialogs.get()
 //                .createCurrencyDialog(getParentFragmentManager(), new CountryCurrencyPickerListener() {
