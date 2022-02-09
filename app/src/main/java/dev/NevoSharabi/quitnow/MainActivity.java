@@ -2,6 +2,7 @@ package dev.NevoSharabi.quitnow;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -23,8 +24,11 @@ import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.navigation.ui.NavigationUI;
 import java.util.Arrays;
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements
     private DrawerLayout drawerLayout;
     private NavigationView nav_view;
     private NavController navController;
-
+    private User u;
 
     private ImageView main_drawer_btn;
     private ImageView drawer_user_pic;
@@ -64,14 +68,14 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onStop() {
         super.onStop();
-       DBupdater.get().updateStatus(KEYS.Status.Offline);
+      // DBupdater.get().updateStatus(KEYS.Status.Offline);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Dialogs.get().addContext(this);
-        DBupdater.get().updateStatus(KEYS.Status.Online);
+        //DBupdater.get().updateStatus(KEYS.Status.Online);
     }
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
@@ -123,15 +127,40 @@ public class MainActivity extends AppCompatActivity implements
     private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
         IdpResponse response = result.getIdpResponse();
         if (result.getResultCode() == RESULT_OK) {
-            // Successfully signed in
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//            if(SharedPrefs.get().isFirstLogin()) {
-//                Utils.get().myStartActivity(this, CreateProfileActivity.class);
-//                return;
-//            }
-            assert user != null;
-           Log.i("info", "User ID: " + user.getUid());
-           Log.i("info", "User Display Name: " + user.getDisplayName());
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference reference_users = database.getReference("Users");
+             u = null;
+            reference_users.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    u  = (User) snapshot.getValue(User.class);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+            if (u == null)
+                Log.i("info2", "================================================================================================ " );
+            else{
+                Log.i("info3", "==else==**************************************************************************========= " );
+            }
+
+
+
+//            // Successfully signed in
+//            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+////            if(SharedPrefs.get().isFirstLogin()) {
+////                Utils.get().myStartActivity(this, CreateProfileActivity.class);
+////                return;
+////            }
+//            assert user != null;
+//           Log.i("info", "User ID: " + user.getUid());
+//           Log.i("info", "User Display Name: " + user.getDisplayName());
+
+
         } else {
 
         }
