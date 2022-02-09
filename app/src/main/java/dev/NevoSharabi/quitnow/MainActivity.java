@@ -87,6 +87,11 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //FOR firt time
+        if(SharedPrefs.get().isFirstLogin()) {
+            Utils.get().myStartActivity(this, CreateProfileActivity.class);
+            return;
+        }
         createSignInIntent();
 
         dbReader = DBreader.get();
