@@ -42,12 +42,7 @@
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.QuitNow.NoActionBar" />
 
-        <activity android:name=".login.LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
+
 
 
 

@@ -11,7 +11,7 @@ import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
-import dev.NevoSharabi.quitnow.login.LoginActivity;
+import dev.NevoSharabi.quitnow.tools.Utils;
 
 
 public class ActivitySplash extends AppCompatActivity {
@@ -58,9 +58,7 @@ public class ActivitySplash extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animator animator) {
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(intent);
-                        finish();
+                        Utils.get().myStartActivity(ActivitySplash.this, MainActivity.class);
                         overridePendingTransition(0, 0);
                     }
 

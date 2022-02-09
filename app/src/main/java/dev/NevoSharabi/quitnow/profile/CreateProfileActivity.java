@@ -14,6 +14,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import dev.NevoSharabi.quitnow.MainActivity;
 import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
 import dev.NevoSharabi.quitnow.dateBase.DBupdater;
@@ -60,7 +61,7 @@ public class CreateProfileActivity extends AppCompatActivity {
             DBupdater.get()     .updateUser(user);
             DBreader.get()      .readUserData();
             SharedPrefs.get().saveFirstLogin();
-            Utils.get()         .myStartActivity(CreateProfileActivity.this, ProgressFragment.class);
+            Utils.get()         .myStartActivity(CreateProfileActivity.this, MainActivity.class);
 
         });
 
