@@ -60,7 +60,7 @@ public class CreateProfileActivity extends AppCompatActivity {
             User user = createUserData();
             DBupdater.get()     .updateUser(user);
             DBreader.get()      .readUserData();
-            SharedPrefs.get().saveFirstLogin();
+//            SharedPrefs.get().saveFirstLogin();
             Utils.get()         .myStartActivity(CreateProfileActivity.this, MainActivity.class);
 
         });

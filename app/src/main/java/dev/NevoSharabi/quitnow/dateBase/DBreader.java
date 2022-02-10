@@ -7,15 +7,16 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
+
 import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.store.StoreItem;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.KEYS;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
-
 
 
 import java.util.ArrayList;
@@ -25,15 +26,15 @@ import dev.NevoSharabi.quitnow.profile.User;
 
 public class DBreader {
 
-    private static  DBreader    instance;
+    private static DBreader instance;
 
-    private         User         user;
-    private         List        rewards_info = new ArrayList<>();
+    private User user;
+    private List rewards_info = new ArrayList<>();
 
     //=============================
 
-    public static void initReader(){
-        if(instance == null) {
+    public static void initReader() {
+        if (instance == null) {
             instance = new DBreader();
             instance.readData();
         }
@@ -42,18 +43,19 @@ public class DBreader {
     /**
      * gets the singleton
      */
-    public static DBreader get() { return instance; }
+    public static DBreader get() {
+        return instance;
+    }
 
 
     private void readData() {
         if (App.getLoggedUser() != null)
             get().readUserData();
-        for (int i = 1; i <14 ; i++) {
-            rewards_info.add("1" + i );
+        for (int i = 1; i < 14; i++) {
+            rewards_info.add("1" + i);
         }
         //get().readListData(KEYS.REWARDS_INFO_REF, rewards_info, String.class);
     }
-
 
 
     public void readUserData() {
@@ -65,32 +67,36 @@ public class DBreader {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         user = dataSnapshot.getValue(User.class);
+                        Log.i("info", "im in readuserdata() UUID = " + user.getUid());
                         App.log("readUserData() - read user");
                     }
 
                     @Override
-                    public void onCancelled(DatabaseError error) { }
+                    public void onCancelled(DatabaseError error) {
+                    }
                 });
     }
-//
+
+    //
 //    //=========================================
-    public void readListData(String Ref, List list, Class ObjectClass){
+    public void readListData(String Ref, List list, Class ObjectClass) {
         Refs.getDBref(Ref).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                for (DataSnapshot snapshot : dataSnapshot.getChildren())
                     list.add(snapshot.getValue(ObjectClass));
                 App.log("readListData() - read list");
-        }
+            }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 
     private StorageReference photoPathRef(int key, String fileName) {
         String ref = "";
-        switch (key){
+        switch (key) {
             case KEYS.STORE:
                 ref = Refs.getStorePicStoragePath(fileName);
                 break;
@@ -100,14 +106,15 @@ public class DBreader {
         }
         return Refs.getStorageRef(ref);
     }
+
     /**
-     * @param key STORE = 1 , PROFILE = 2 found in KEYS
+     * @param key       STORE = 1 , PROFILE = 2 found in KEYS
      * @param imageView imageView to load into
-     * @param fileName name of the file to load
+     * @param fileName  name of the file to load
      */
-    public void readPic(int key, ImageView imageView, String fileName){
-        StorageReference ref = photoPathRef(key,fileName);
-        Log.d("info",ref.getPath());
+    public void readPic(int key, ImageView imageView, String fileName) {
+        StorageReference ref = photoPathRef(key, fileName);
+        Log.d("info", ref.getPath());
         Glide.with(App.getAppContext())
                 .load(ref)
                 .placeholder(R.drawable.img_default_pic)
@@ -115,14 +122,16 @@ public class DBreader {
                 .dontAnimate()
                 .into(imageView);
     }
+
     /**
      * read photo from server even if in cache
-     * @param key STORE = 1 , PROFILE = 2 found in KEYS
+     *
+     * @param key       STORE = 1 , PROFILE = 2 found in KEYS
      * @param imageView imageView to load into
-     * @param fileName name of the file to load
+     * @param fileName  name of the file to load
      */
-    public void readPicNoCache(int key, ImageView imageView, String fileName){
-        StorageReference ref = photoPathRef(key,fileName);
+    public void readPicNoCache(int key, ImageView imageView, String fileName) {
+        StorageReference ref = photoPathRef(key, fileName);
         Glide.with(App.getAppContext())
                 .load(ref)
                 .placeholder(R.drawable.img_default_pic)
@@ -133,9 +142,13 @@ public class DBreader {
     }
     //=========================================
 
-    public User getUser(){ return user; }
+    public User getUser() {
+        return user;
+    }
 
 
-    public List getRewardsInfo(){ return rewards_info; }
+    public List getRewardsInfo() {
+        return rewards_info;
+    }
 
 }

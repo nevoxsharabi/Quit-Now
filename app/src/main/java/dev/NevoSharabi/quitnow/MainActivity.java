@@ -2,6 +2,7 @@ package dev.NevoSharabi.quitnow;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,10 +25,14 @@ import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.navigation.ui.NavigationUI;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -58,21 +64,10 @@ public class MainActivity extends AppCompatActivity implements
     private TextView drawer_lbl_userName;
     private TextView user_coins;
 
-    private User            user;
+    private User user;
     private DBreader dbReader;
+    private Activity activity;
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        DBupdater.get().updateStatus();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Dialogs.get().addContext(this);
-        DBupdater.get().updateStatus();
-    }
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
             new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
@@ -88,22 +83,33 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //FOR firt time
-        if(SharedPrefs.get().isFirstLogin()) {
+        /*if (SharedPrefs.get().isFirstLogin()) {
             Utils.get().myStartActivity(this, CreateProfileActivity.class);
             return;
-        }
+        }*/
+        activity = this;
         createSignInIntent();
 
-        dbReader = DBreader.get();
-        user = dbReader.getUser();
         findViews();
         initDrawer();
 
 
-        if(!initServerConnection()) return;
-
-        setUserData();
+        if (!initServerConnection()) return;
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        DBupdater.get().updateStatus();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Dialogs.get().addContext(this);
+        DBupdater.get().updateStatus();
+    }
+
     public void createSignInIntent() {
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
@@ -121,32 +127,65 @@ public class MainActivity extends AppCompatActivity implements
 
     private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
         IdpResponse response = result.getIdpResponse();
+        Log.i("info", "==========i am before login check=====");
         if (result.getResultCode() == RESULT_OK) {
             // Successfully signed in
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            if(SharedPrefs.get().isFirstLogin()) {
-                Utils.get().myStartActivity(this, CreateProfileActivity.class);
-                return;
-            }
-            assert user != null;
-           Log.i("info", "User ID: " + user.getUid());
-           Log.i("info", "User Display Name: " + user.getDisplayName());
+//            Log.i("info", "==========successfully logged in=====");
+//            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//            if (SharedPrefs.get().isFirstLogin()) {
+//                Utils.get().myStartActivity(this, CreateProfileActivity.class);
+//                return;
+//            }
+//            assert user != null;
+//            Log.i("info", "User ID: " + user.getUid());
+//            Log.i("info", "User Display Name: " + user.getDisplayName());
 
+            Log.i("info", "==========successfully logged in=====");
+            user = null;
+            FirebaseUser firebase_user = FirebaseAuth.getInstance().getCurrentUser();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference reference_users = database.getReference("Users");
+            reference_users.child(firebase_user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    //getting user from database if exists
+                    user = snapshot.getValue(User.class);
+                    if (user == null) {
+                        //user does not exist in database
+                        Log.i("info", "user is null");
+                        Log.i("info", "im in readuserdata() UUID = " + firebase_user.getUid());
+                        Utils.get().myStartActivity(activity, CreateProfileActivity.class);
+                    } else {
+                        //user exists in database
+                        Log.i("info", "user is not null");
+                        Log.i("info", "im in readuserdata() UUID = " + user.getUid());
+
+                    }
+                    dbReader = DBreader.get();
+                    user = dbReader.getUser();
+                    setUserData();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
 
         } else {
-
+            Log.i("info", "==========didn't login=====");
         }
     }
 
     private void setUserData() {
-        drawer_lbl_userName .setText(user.getName());
-        user_coins          .setText("Coins - "+ user.getCoins());
+        drawer_lbl_userName.setText(user.getName());
+        user_coins.setText("Coins - " + user.getCoins());
         //dbReader.get()      .readPicNoCache(KEYS.PROFILE, drawer_user_pic, user.getUid());
     }
 
     private boolean initServerConnection() {
         DBreader dbReader = DBreader.get();
-        if(!App.isNetworkAvailable()){
+        if (!App.isNetworkAvailable()) {
             return false;
         } else if (dbReader.getUser() == null) { // if data hasn't arrived from db yet
             App.log("initServerConnection() - trying to fetch user");
@@ -159,13 +198,13 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void findViews() {
-        drawerLayout        = findViewById(R.id.drawerLayout);
-        nav_view            = findViewById(R.id.nav_view);
-        main_drawer_btn     = findViewById(R.id.main_drawer_btn);
-        main_lbl_title      = findViewById(R.id.main_lbl_title);
-        user_coins          = findViewById(R.id.user_coins);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        nav_view = findViewById(R.id.nav_view);
+        main_drawer_btn = findViewById(R.id.main_drawer_btn);
+        main_lbl_title = findViewById(R.id.main_lbl_title);
+        user_coins = findViewById(R.id.user_coins);
         drawer_lbl_userName = nav_view.getHeaderView(0).findViewById(R.id.drawer_lbl_userName);
-        drawer_user_pic     = nav_view.getHeaderView(0).findViewById(R.id.drawer_user_pic);
+        drawer_user_pic = nav_view.getHeaderView(0).findViewById(R.id.drawer_user_pic);
     }
 
 
@@ -186,12 +225,12 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void updateProfile(User user) {
-       // dbReader.get().readPicNoCache(KEYS.PROFILE, drawer_user_pic,user.getUid());
+        // dbReader.get().readPicNoCache(KEYS.PROFILE, drawer_user_pic,user.getUid());
         drawer_lbl_userName.setText(user.getName());
     }
 
     @Override
-    public void setFragmentToView(Fragment fragment, int layout_id){
+    public void setFragmentToView(Fragment fragment, int layout_id) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(layout_id, fragment).commit();
     }
