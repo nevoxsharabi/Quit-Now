@@ -8,12 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import com.example.Stopi.R;
+
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
-//import com.example.Stopi.dataBase.DBupdater;
-//import com.example.Stopi.profile.User;
-//import com.example.Stopi.tools.App;
-//import com.example.Stopi.tools.Utils;
+
 import dev.NevoSharabi.quitnow.dateBase.DBupdater;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;

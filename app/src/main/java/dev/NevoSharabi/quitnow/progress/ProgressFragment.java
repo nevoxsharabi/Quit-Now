@@ -97,9 +97,7 @@ public class ProgressFragment extends Fragment {
 
         internetChecker.postDelayed(runnable, 200);
 
-        if (!App.isNetworkAvailable() || user == null) return view;
-
-
+        App.isNetworkAvailable();
 
 
         return view;
@@ -110,7 +108,7 @@ public class ProgressFragment extends Fragment {
     private void findViews() {
         time_lbl_passed = view.findViewById(R.id.time_passed);
         reset_progress = view.findViewById(R.id.reset_progress);
-         progress_money = view.findViewById(R.id.progress_money);
+        progress_money = view.findViewById(R.id.progress_money);
 
     }
 

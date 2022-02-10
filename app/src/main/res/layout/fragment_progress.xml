@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
-    android:background="@drawable/background"
+    android:background="@drawable/back_sunny"
     tools:context=".progress.ProgressFragment">
 
     <com.furkanakdemir.surroundcardview.SurroundCardView
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="you've stayed clean for:"
+                android:text="@string/you_ve_stayed_clean_for"
                 android:textSize="30sp"
                 android:textStyle="bold"/>
 
