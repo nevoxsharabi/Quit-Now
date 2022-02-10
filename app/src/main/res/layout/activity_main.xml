@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/title"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/main_drawer_btn"
                 android:layout_marginStart="15dp"
@@ -48,10 +48,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/title"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:text="Coins - 1000"/>
+                android:text="@string/coins_1000"/>
 
         </RelativeLayout>
 

@@ -67,7 +67,7 @@ public class DBreader {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         user = dataSnapshot.getValue(User.class);
-                        Log.i("info", "im in readuserdata() UUID = " + user.getUid());
+                   //     Log.i("info", "im in readuserdata() UUID = " + user.getUid());
                         App.log("readUserData() - read user");
                     }
 

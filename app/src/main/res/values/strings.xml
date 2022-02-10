@@ -35,6 +35,11 @@
     <string name="enter_code">Enter Code</string>
     <string name="phone_number">Phone Number</string>
     <string name="cigarettes_per_week">Cigarettes Per Week</string>
+    <string name="symptoms">symptoms</string>
+    <string name="tips">tips</string>
+    <string name="coins_1000">Coins - 1000</string>
+    <string name="tips_and_symptoms">tips and symptoms</string>
+    <string name="quit_overview">quit_overview</string>
 
 
 </resources>

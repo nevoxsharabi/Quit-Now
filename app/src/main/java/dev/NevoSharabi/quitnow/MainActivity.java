@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //FOR firt time
+
         /*if (SharedPrefs.get().isFirstLogin()) {
             Utils.get().myStartActivity(this, CreateProfileActivity.class);
             return;
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements
         initDrawer();
 
 
-        if (!initServerConnection()) return;
+
     }
 
     @Override
@@ -159,11 +159,12 @@ public class MainActivity extends AppCompatActivity implements
                         //user exists in database
                         Log.i("info", "user is not null");
                         Log.i("info", "im in readuserdata() UUID = " + user.getUid());
-
+                        dbReader = DBreader.get();
+                        user = dbReader.getUser();
+                        if (!initServerConnection()) return;
+                        setUserData();
                     }
-                    dbReader = DBreader.get();
-                    user = dbReader.getUser();
-                    setUserData();
+
                 }
 
                 @Override

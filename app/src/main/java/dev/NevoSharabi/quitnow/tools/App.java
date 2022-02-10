@@ -36,7 +36,7 @@ public class App extends Application {
         context         = getApplicationContext();
         myToast         = Toast.makeText(context, "", Toast.LENGTH_SHORT);
         connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        SharedPrefs     .initPrefs();
+        //SharedPrefs     .initPrefs();
         DBupdater       .initUpdater();
         DBreader        .initReader();
         Utils           .initUtils();

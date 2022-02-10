@@ -31,8 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="Time smoke free"
-                android:textSize="40dp"
+                android:text="you've stayed clean for:"
+                android:textSize="30sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 style="@style/text"
                 android:layout_below="@+id/time_free_title"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -54,18 +54,40 @@
         style="@style/ButtonDesign"
         android:backgroundTint="#B30000"
         android:text="reset progress"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_timer" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/quit_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ButtonDesign"
+        android:backgroundTint="#B30000"
+        android:text="quit overview"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reset_progress" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tips_and_symptoms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ButtonDesign"
+        android:backgroundTint="#B30000"
+        android:text="@string/tips_and_symptoms"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quit_overview" />
 
     <com.furkanakdemir.surroundcardview.SurroundCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/svc"
-        app:layout_constraintHeight_min="120dp"
+        app:layout_constraintHeight_min="90dp"
         app:layout_constraintBottom_toBottomOf="@+id/dummy_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
