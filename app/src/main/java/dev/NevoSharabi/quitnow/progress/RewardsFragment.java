@@ -37,7 +37,7 @@ public class RewardsFragment extends Fragment {
 
     private List<Reward> rewards;
 
-    //====================================================
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

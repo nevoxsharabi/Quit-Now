@@ -12,19 +12,13 @@
 
 
     <!-- Fragments -->
-    <string name="title_fragment_chats">ChatsFragment</string>
     <string name="title_fragment_bought_items">BoughtItemsFragment</string>
-    <string name="title_fragment_distract">GameFragment</string>
-    <string name="title_fragment_feed">FeedFragment</string>
     <string name="title_fragment_progress">ProgressFragment</string>
     <string name="title_fragment_rewards">RewardsFragment</string>
     <string name="title_fragment_settings">SettingsFragment</string>
     <string name="title_fragment_store">StoreFragment</string>
 
     <!-- Navigation Drawer items -->
-    <string name="drawer_item_chats">Chat</string>
-    <string name="drawer_item_distract">Distraction</string>
-    <string name="drawer_item_feed">Feed</string>
     <string name="drawer_item_gift_bag">Gift Bag</string>
     <string name="drawer_item_progress">Progress</string>
     <string name="drawer_item_rewards">Rewards</string>
@@ -41,6 +35,9 @@
     <string name="tips_and_symptoms">tips and symptoms</string>
     <string name="quit_overview">quit_overview</string>
     <string name="you_ve_stayed_clean_for">you\'ve stayed clean for:</string>
+    <string name="title_activity_tips_and_symptoms">TipsAndSymptoms</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 
 
 </resources>

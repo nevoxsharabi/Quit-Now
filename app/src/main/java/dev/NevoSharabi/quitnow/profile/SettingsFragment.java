@@ -21,8 +21,7 @@ import dev.NevoSharabi.quitnow.tools.Utils;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 
 
 public class SettingsFragment extends Fragment {
@@ -31,9 +30,6 @@ public class SettingsFragment extends Fragment {
 
     private ImageView user_profile_pic;
     private Uri filePathUri;
-
-    private String currencySymbol;
-
     private TextInputLayout user_name;
     private TextInputLayout years_smoked;
     private TextInputLayout cigs_per_day;
@@ -43,8 +39,7 @@ public class SettingsFragment extends Fragment {
     private MaterialButton update_btn;
     private MaterialButton logout;
     private MaterialButton delete_account;
-    private MaterialButton currency;
-    private MaterialButton theme_btn;
+
 
     private OnProfileUpdate onProfileUpdate;
     private User user;
@@ -84,8 +79,7 @@ public class SettingsFragment extends Fragment {
         update_btn = view.findViewById(R.id.settings_update);
         logout = view.findViewById(R.id.settings_logout);
         delete_account = view.findViewById(R.id.settings_delete);
-        currency = view.findViewById(R.id.settings_btn_currency);
-        theme_btn = view.findViewById(R.id.settings_btn_theme);
+
     }
 
     private void setListeners() {
@@ -98,19 +92,7 @@ public class SettingsFragment extends Fragment {
             FirebaseAuth.getInstance()     .signOut();
         });
 
-//        currency.setOnClickListener(v -> Dialogs.get()
-//                .createCurrencyDialog(getParentFragmentManager(), new CountryCurrencyPickerListener() {
-//                    @Override
-//                    public void onSelectCountry(Country country) {
-//                        currencySymbol = country.getCurrency().getCode() +" "+ country.getCurrency().getSymbol();
-//                        currency.setText(currencySymbol);
-//                    }
-//
-//                    @Override
-//                    public void onSelectCurrency(Currency currency) { }
-//                }));
-//
-//        theme_btn.setOnClickListener(v -> Dialogs.get().themeDialog().show());
+
     }
 
     //============================================
@@ -124,7 +106,6 @@ public class SettingsFragment extends Fragment {
         cigs_per_day.getEditText().setText("" + user.getCigsPerWeek());
         price_per_pack.getEditText().setText("" + user.getPricePerPack());
         cigs_per_pack.getEditText().setText("" + user.getCigsPerPack());
-        currency.setText("" + user.getCurrencySymbol());
     }
 
     //============================================
@@ -132,12 +113,7 @@ public class SettingsFragment extends Fragment {
     private String getInputLayoutText(TextInputLayout et) {
         return et.getEditText().getText().toString();
     }
-    public DatabaseReference userRef(String userId) {
-        return FirebaseDatabase.getInstance().getReference("Users").child(userId);
-    }
-    public void saveUser(User user) {
-        userRef(user.getUserId()).setValue(user);
-    }
+
 
 
     private void updateUserData() {

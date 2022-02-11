@@ -58,7 +58,6 @@ public class App extends Application {
         return      myToast;
     }
 
-    public static void log(String msg)          { Log.d(KEYS.LOG_TAG, msg); }
 
     public static Context getAppContext()       { return context; }
 

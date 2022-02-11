@@ -44,7 +44,6 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.RewardsV
         setHolderData(holder,position, reward);
     }
 
-    //====================================================
 
     private void setHolderData(RewardsViewHolder holder, int position, Reward reward){
         int time = (int)TimeUnit.MILLISECONDS.toDays(DBreader.get().getUser().getRehabDuration());
@@ -98,8 +97,6 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.RewardsV
         private void setViewHolderData(){
             itemView.setOnClickListener(v -> flipView.flipTheView());
         }
-
-        //====================================================
 
     }
 }

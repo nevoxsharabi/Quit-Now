@@ -59,16 +59,13 @@ public class DBreader {
 
 
     public void readUserData() {
-//        StoreItem s1 = new StoreItem().setTitle("bamb").setPrice(100);
-//        Refs.getUsersRef1().child(App.getLoggedUser().getUid());
-//        Refs.getUsersRef1().child("8ERAWslc4vXLPYsRlRh4zj4t7uK2").child(s1.getTitle()).setValue(s1);
         Refs.getUsersRef().child(App.getLoggedUser().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         user = dataSnapshot.getValue(User.class);
                    //     Log.i("info", "im in readuserdata() UUID = " + user.getUid());
-                        App.log("readUserData() - read user");
+
                     }
 
                     @Override
@@ -85,7 +82,6 @@ public class DBreader {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren())
                     list.add(snapshot.getValue(ObjectClass));
-                App.log("readListData() - read list");
             }
 
             @Override

@@ -44,19 +44,8 @@ public class SharedPrefs {
         editor.apply();
     }
 
-    //====================================================
 
-    public int getTheme(){ return prefs.getInt(THEME, 0); }
 
-    public void saveTheme(int theme) {
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(THEME,theme);
-        editor.apply();
-    }
 
-    public void deleteSelectedTheme() {
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.remove(THEME);
-        editor.commit();
-    }
+
 }

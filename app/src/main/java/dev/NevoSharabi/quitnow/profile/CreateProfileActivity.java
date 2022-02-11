@@ -36,7 +36,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     private TextInputLayout cigs_per_pack;
 
     private MaterialButton  continue_btn;
-    private MaterialButton  currency_btn;
+
 
 
 

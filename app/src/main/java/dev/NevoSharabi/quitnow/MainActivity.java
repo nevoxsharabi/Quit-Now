@@ -189,12 +189,10 @@ public class MainActivity extends AppCompatActivity implements
         if (!App.isNetworkAvailable()) {
             return false;
         } else if (dbReader.getUser() == null) { // if data hasn't arrived from db yet
-            App.log("initServerConnection() - trying to fetch user");
             DBreader.get().readUserData();
             Utils.get().myStartActivity(this, ActivitySplash.class);
             return false;
         }
-        App.log("initServerConnection() - fetched user");
         return true;
     }
 

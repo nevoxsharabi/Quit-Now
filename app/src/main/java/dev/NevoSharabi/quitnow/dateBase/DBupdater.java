@@ -49,11 +49,6 @@ public class DBupdater {
      */
     public void updateUser(User user){ Refs.getUsersRef().child(user.getUid()).setValue(user); }
 
-//    public void updateUser(User user){
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("Users");
-//        myRef.child(user.getUid()).setValue(user);
-//    }
 
 
     /**

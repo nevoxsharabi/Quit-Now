@@ -11,7 +11,6 @@ public class User {
     private String  uid = "";
     private String  name = "";
     private double  yearsSmoked = 0;
-    private String  currencySymbol = "";
     private int cigsPerWeek = 0;
     private double  pricePerPack = 0;
     private long    dateStoppedSmoking;
@@ -28,41 +27,20 @@ public class User {
     public User(){ }
 
 
-
-
-    //=========================================
-
     public String getUserId() {
         return uid;
     }
 
 
 
-    //========================================= before stopi
 
     public double totalCigsSmoked(){ return (yearsSmoked * KEYS.DAYS_IN_YEAR * cigsPerWeek) + cigsSinceQuit; }
 
-    public double moneyWasted(){ return totalCigsSmoked()*cigCost(); }
-
-    public double lifeLost(){ return timeByCig(totalCigsSmoked()); }
-
-    //========================================= after stopi
 
     public double cigsNotSmoked(){ return (TimeUnit.MILLISECONDS.toHours(getRehabDuration())) * cigsPerWeek/7/24; }
 
     public double moneySaved(){ return cigsNotSmoked()*cigCost();}
 
-    public double lifeGained(){ return timeByCig(cigsNotSmoked()); }
-
-    //=========================================
-
-    public boolean updateTotalCigs(double cigsSmoked) {
-        if(cigsSmoked > 0){
-            this.setDateStoppedSmoking(Calendar.getInstance().getTimeInMillis());
-            return true;
-        }
-        return false;
-    }
 
     private double timeByCig(double cigs){ return (KEYS.MINUTES_LOST_PER_CIG * cigs) / 60 / 24; }
 
@@ -94,7 +72,6 @@ public class User {
 
     public User setBoughtItems(HashMap<String,StoreItem> boughtItems) { this.boughtItems = boughtItems; return this; }
 
-    public User setCurrencySymbol(String currencySymbol) { this.currencySymbol = currencySymbol; return this; }
 
     public User setStatus(KEYS.Status status) { this.status = status; return this; }
 
@@ -122,8 +99,6 @@ public class User {
     public long getRehabDuration(){ return Calendar.getInstance().getTimeInMillis() - dateStoppedSmoking; }
 
     public KEYS.Status getStatus() { return status; }
-
-    public String getCurrencySymbol() { return currencySymbol; }
 
     public HashMap<String, StoreItem> getBoughtItems() { return boughtItems; }
 }
