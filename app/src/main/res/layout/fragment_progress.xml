@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         style="@style/ButtonDesign"
         android:backgroundTint="#B30000"
-        android:text="quit overview"
+        android:text="quit phase overview"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

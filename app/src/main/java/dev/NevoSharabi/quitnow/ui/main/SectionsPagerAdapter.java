@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.fragment_tips_and_symptoms1;
 import dev.NevoSharabi.quitnow.fragment_tips_and_symptoms2;
-import dev.NevoSharabi.quitnow.page3;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -36,9 +35,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                     return  new fragment_tips_and_symptoms1();
                 case 1:
                     return  new fragment_tips_and_symptoms2();
-
-                case 2:
-                    return  new page3();
                 default:
                     return  new PlaceholderFragment();
             }
