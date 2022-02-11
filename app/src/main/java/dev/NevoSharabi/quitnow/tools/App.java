@@ -30,9 +30,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("Users");
-//        DatabaseReference myRef2 = database.getReference("Store_items");
         context         = getApplicationContext();
         myToast         = Toast.makeText(context, "", Toast.LENGTH_SHORT);
         connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

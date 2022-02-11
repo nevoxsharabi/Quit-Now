@@ -13,8 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import dev.NevoSharabi.quitnow.ActivitySplash;
-import dev.NevoSharabi.quitnow.MainActivity;
 import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.TipsAndSymptoms;
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
@@ -86,7 +84,6 @@ public class ProgressFragment extends Fragment {
         reset_progress = view.findViewById(R.id.reset_progress);
         progress_money = view.findViewById(R.id.progress_money);
         quit_overview = view.findViewById(R.id.quit_overview);
-        tips_and_symptoms = view.findViewById(R.id.tips_and_symptoms);
 
 
     }
@@ -104,9 +101,7 @@ public class ProgressFragment extends Fragment {
                 });
                 
 
-        //tips_and_symptoms.setOnClickListener(v ->
-      //          Dialogs.get().goalDialog(user_main_goal).show()
-     //   );
+
         
         
     }

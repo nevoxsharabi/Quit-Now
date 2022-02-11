@@ -5,17 +5,33 @@
     android:layout_height="match_parent"
     tools:context=".fragment_tips_and_symptoms2">
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/weed_phase">
+        android:contentDescription="@string/ciggrate_phase">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/weed_phase"
-            android:textSize="21sp"
-            android:textStyle="italic" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tips"
+                android:textSize="19sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tips2"
+                android:textSize="19sp"
+                android:textStyle="italic"  />
+
+        </LinearLayout>
     </ScrollView>
 
 

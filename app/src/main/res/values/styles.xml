@@ -31,8 +31,8 @@
     </style>
 
     <style name="ButtonDesign">
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:backgroundTint">?colorPrimary</item>
+        <item name="android:layout_marginTop">7dp</item>
+        <item name="android:backgroundTint">#D50000</item>
         <item name="cornerRadius">15dp</item>
         <item name="android:textColorHint">?colorOnSecondary</item>
         <item name="android:textColor">?colorOnSecondary</item>

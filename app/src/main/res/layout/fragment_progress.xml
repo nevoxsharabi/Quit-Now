@@ -53,6 +53,8 @@
         android:layout_height="wrap_content"
         style="@style/ButtonDesign"
         android:backgroundTint="#B30000"
+        android:padding="10dp"
+        android:layout_margin="20dp"
         android:text="reset progress"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +65,8 @@
         android:id="@+id/quit_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:padding="10dp"
         style="@style/ButtonDesign"
         android:backgroundTint="#B30000"
         android:text="quit phase overview"
@@ -71,17 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reset_progress" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/tips_and_symptoms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/ButtonDesign"
-        android:backgroundTint="#B30000"
-        android:text="@string/tips_and_symptoms"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quit_overview" />
+
 
     <com.furkanakdemir.surroundcardview.SurroundCardView
         android:layout_width="match_parent"
@@ -113,32 +107,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/smoker_future_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/dummy_layout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dummy_layout" />
+<!--    <FrameLayout-->
+<!--        android:id="@+id/smoker_future_data"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingTop="10dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/dummy_layout2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/dummy_layout" />-->
 
-    <RelativeLayout
-        android:id="@+id/dummy_layout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/dummy_layout" />
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/dummy_layout2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/dummy_layout" />-->
 
-    <FrameLayout
-        android:id="@+id/smoker_past_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dummy_layout2" />
+<!--    <FrameLayout-->
+<!--        android:id="@+id/smoker_past_data"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/dummy_layout2" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

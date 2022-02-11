@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import dev.NevoSharabi.quitnow.R;
+import dev.NevoSharabi.quitnow.Tips;
 import dev.NevoSharabi.quitnow.fragment_tips_and_symptoms1;
 import dev.NevoSharabi.quitnow.fragment_tips_and_symptoms2;
 
@@ -35,6 +36,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                     return  new fragment_tips_and_symptoms1();
                 case 1:
                     return  new fragment_tips_and_symptoms2();
+                case 2:
+                    return  new Tips();
                 default:
                     return  new PlaceholderFragment();
             }
@@ -49,7 +52,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
-        return 2;
+        return 3;
     }
 }

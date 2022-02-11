@@ -19,7 +19,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="Theme.QuitNow.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.QuitNow.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
