@@ -129,16 +129,6 @@ public class MainActivity extends AppCompatActivity implements
         IdpResponse response = result.getIdpResponse();
         Log.i("info", "==========i am before login check=====");
         if (result.getResultCode() == RESULT_OK) {
-            // Successfully signed in
-//            Log.i("info", "==========successfully logged in=====");
-//            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//            if (SharedPrefs.get().isFirstLogin()) {
-//                Utils.get().myStartActivity(this, CreateProfileActivity.class);
-//                return;
-//            }
-//            assert user != null;
-//            Log.i("info", "User ID: " + user.getUid());
-//            Log.i("info", "User Display Name: " + user.getDisplayName());
 
             Log.i("info", "==========successfully logged in=====");
             user = null;
@@ -154,7 +144,9 @@ public class MainActivity extends AppCompatActivity implements
                         //user does not exist in database
                         Log.i("info", "user is null");
                         Log.i("info", "im in readuserdata() UUID = " + firebase_user.getUid());
-                        Utils.get().myStartActivity(activity, CreateProfileActivity.class);
+                        Intent intent   = new Intent(activity, CreateProfileActivity.class);
+                        activity.startActivity(intent);
+                        //Utils.get().myStartActivity(activity, CreateProfileActivity.class);
                     } else {
                         //user exists in database
                         Log.i("info", "user is not null");

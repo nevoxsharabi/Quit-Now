@@ -1,4 +1,4 @@
-package dev.NevoSharabi.quitnow;
+package dev.NevoSharabi.quitnow.tips;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import dev.NevoSharabi.quitnow.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Tips#newInstance} factory method to
+ * Use the {@link fragment_tips_and_symptoms1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Tips extends Fragment {
+public class fragment_tips_and_symptoms1 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class Tips extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Tips() {
+    public fragment_tips_and_symptoms1() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class Tips extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Tips.
+     * @return A new instance of fragment fragment_tips_and_symptoms1.
      */
     // TODO: Rename and change types and number of parameters
-    public static Tips newInstance(String param1, String param2) {
-        Tips fragment = new Tips();
+    public static fragment_tips_and_symptoms1 newInstance(String param1, String param2) {
+        fragment_tips_and_symptoms1 fragment = new fragment_tips_and_symptoms1();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class Tips extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tips, container, false);
+        return inflater.inflate(R.layout.fragment_tips_and_symptoms1, container, false);
     }
 }

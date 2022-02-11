@@ -51,8 +51,8 @@ public class DBreader {
     private void readData() {
         if (App.getLoggedUser() != null)
             get().readUserData();
-        for (int i = 1; i < 14; i++) {
-            rewards_info.add("1" + i);
+        for (int i = 1; i < 20; i++) {
+            rewards_info.add("congratulations you earned " + i*1000 + "$!!" );
         }
         //get().readListData(KEYS.REWARDS_INFO_REF, rewards_info, String.class);
     }

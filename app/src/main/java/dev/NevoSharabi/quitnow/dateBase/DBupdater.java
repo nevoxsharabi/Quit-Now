@@ -1,16 +1,8 @@
 package dev.NevoSharabi.quitnow.dateBase;
 
-import android.net.Uri;
+
 
 import dev.NevoSharabi.quitnow.profile.*;
-import dev.NevoSharabi.quitnow.store.StoreItem;
-import dev.NevoSharabi.quitnow.tools.*;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.Calendar;
 
 public class DBupdater {
 
@@ -66,15 +58,7 @@ public class DBupdater {
      * @param user
      */
     public void updateGiftBag(User user){ Refs.getGiftBagsRef().child(user.getUid()).setValue(user.getBoughtItems()); }
-    /**
-     * updates user goal in database
-     * and saves user object
-     */
-    public void updateUserGoal(String goal){
-        User user = DBreader.get().getUser();
-        if(user == null) return;
-        saveLoggedUser();
-    }
+
 
     /**
      * updates user status in database

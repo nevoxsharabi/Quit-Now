@@ -16,7 +16,7 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.QuitNow">
         <activity
-            android:name=".TipsAndSymptoms"
+            android:name=".tips.TipsAndSymptoms"
             android:exported="false"
             android:label="@string/title_activity_tips_and_symptoms"
             android:theme="@style/Theme.QuitNow.NoActionBar" />

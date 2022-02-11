@@ -60,6 +60,6 @@ public class StoreFragment extends Fragment {
         store_list.setAdapter(storeAdapter);
     }
 
-    //====================================================
+
 
 }

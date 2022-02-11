@@ -18,12 +18,10 @@ public class User {
     private int     cigsPerPack = 1;
     private int     coins = 0;
     private HashMap<String, StoreItem> boughtItems = new HashMap<>();
-
-    private double  cigsSinceQuit = 0;
     private long    loggedToday = -1;
 
 
-    private KEYS.Status status = KEYS.Status.Offline;
+
     public User(){ }
 
 
@@ -34,7 +32,7 @@ public class User {
 
 
 
-    public double totalCigsSmoked(){ return (yearsSmoked * KEYS.DAYS_IN_YEAR * cigsPerWeek) + cigsSinceQuit; }
+
 
 
     public double cigsNotSmoked(){ return (TimeUnit.MILLISECONDS.toHours(getRehabDuration())) * cigsPerWeek/7/24; }
@@ -42,9 +40,7 @@ public class User {
     public double moneySaved(){ return cigsNotSmoked()*cigCost();}
 
 
-    private double timeByCig(double cigs){ return (KEYS.MINUTES_LOST_PER_CIG * cigs) / 60 / 24; }
-
-    public double cigCost(){ return pricePerPack/cigsPerPack; }
+    public double cigCost(){ return pricePerPack; }
 
     public void incrementCoins(int amount) { this.coins += amount; }
 
@@ -62,7 +58,6 @@ public class User {
 
     public User setCigsPerWeek(int cigsPerWeek) { this.cigsPerWeek = cigsPerWeek; return this; }
 
-    public User setCigsPerPack(int cigsPerPack) { this.cigsPerPack = cigsPerPack; return this; }
 
     public User setCoins(int coins) { this.coins = coins; return this; }
 
@@ -73,7 +68,7 @@ public class User {
     public User setBoughtItems(HashMap<String,StoreItem> boughtItems) { this.boughtItems = boughtItems; return this; }
 
 
-    public User setStatus(KEYS.Status status) { this.status = status; return this; }
+
 
     //=========================================
 
@@ -98,7 +93,8 @@ public class User {
 
     public long getRehabDuration(){ return Calendar.getInstance().getTimeInMillis() - dateStoppedSmoking; }
 
-    public KEYS.Status getStatus() { return status; }
 
     public HashMap<String, StoreItem> getBoughtItems() { return boughtItems; }
+
+    public User setCigsPerPack(int cigsPerPack) { this.cigsPerPack = cigsPerPack; return this; }
 }

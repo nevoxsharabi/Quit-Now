@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import dev.NevoSharabi.quitnow.*;
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
+import dev.NevoSharabi.quitnow.dateBase.DBupdater;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;
 //import com.example.Stopi.R;
@@ -24,6 +25,7 @@ import dev.NevoSharabi.quitnow.tools.App;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -31,10 +33,7 @@ import java.util.concurrent.TimeUnit;
 public class RewardsFragment extends Fragment {
 
     private View view;
-
     private RecyclerView rewards_list;
-    private RewardsAdapter rewardsAdapter;
-
     private List<Reward> rewards;
 
 
@@ -46,7 +45,7 @@ public class RewardsFragment extends Fragment {
 
         init_views();
 
-        rewardsAdapter  = new RewardsAdapter(rewards);
+        RewardsAdapter rewardsAdapter = new RewardsAdapter(rewards);
         rewards_list    .setLayoutManager(new GridLayoutManager(getContext(),2 ));
         rewards_list    .setAdapter(rewardsAdapter);
 
@@ -68,16 +67,19 @@ public class RewardsFragment extends Fragment {
         User user = DBreader.get().getUser();
         if(user == null) return;
         int time = (int) TimeUnit.MILLISECONDS.toDays(user.getRehabDuration());
-        for (int i = 0; i < 13; i++) {
-            int max = (int)(Math.pow(i,3)+1);
+        for (int i = 1; i < 20; i++) {
+            int max = (int)(Math.pow(i,2)+1);
             LocalDate newDate = LocalDate.now().plusDays(max);
 
             Reward reward = new Reward()
                     .setRewardName(max + " Days Clean!")
                     .setMax(max)
                     .setUnlockDate(newDate);
-            if(time > reward.getMax())
+            if(time > reward.getMax()) {
                 reward.setUnlocked(true);
+                    user.incrementCoins(1000 * i);
+                    DBupdater.get().updateUser(user);
+                }
             rewards.add(reward);
         }
     }

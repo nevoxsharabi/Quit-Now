@@ -32,7 +32,7 @@ public class SettingsFragment extends Fragment {
     private Uri filePathUri;
     private TextInputLayout user_name;
     private TextInputLayout years_smoked;
-    private TextInputLayout cigs_per_day;
+    private TextInputLayout pack_gram_per_week;
     private TextInputLayout price_per_pack;
     private TextInputLayout cigs_per_pack;
 
@@ -73,12 +73,13 @@ public class SettingsFragment extends Fragment {
         user_profile_pic = view.findViewById(R.id.user_profile_pic);
         user_name = view.findViewById(R.id.settings_user_name);
         years_smoked = view.findViewById(R.id.settings_years_smoked);
-        cigs_per_day = view.findViewById(R.id.settings_cigs_day);
+        pack_gram_per_week = view.findViewById(R.id.settings_cigs_day);
         price_per_pack = view.findViewById(R.id.settings_price_pack);
         cigs_per_pack = view.findViewById(R.id.settings_cigs_per_pack);
         update_btn = view.findViewById(R.id.settings_update);
         logout = view.findViewById(R.id.settings_logout);
         delete_account = view.findViewById(R.id.settings_delete);
+        cigs_per_pack       = view.findViewById(R.id.settings_cigs_per_pack);
 
     }
 
@@ -103,9 +104,9 @@ public class SettingsFragment extends Fragment {
 
         user_name.getEditText().setText("" + user.getName());
         years_smoked.getEditText().setText("" + user.getYearsSmoked());
-        cigs_per_day.getEditText().setText("" + user.getCigsPerWeek());
+        pack_gram_per_week.getEditText().setText("" + user.getCigsPerWeek());
         price_per_pack.getEditText().setText("" + user.getPricePerPack());
-        cigs_per_pack.getEditText().setText("" + user.getCigsPerPack());
+        cigs_per_pack   .getEditText()  .setText(""+ user.getCigsPerPack());
     }
 
     //============================================
@@ -119,16 +120,17 @@ public class SettingsFragment extends Fragment {
     private void updateUserData() {
         try {
             String name = getInputLayoutText(user_name);
-            int cigsPerDay = Integer.parseInt(getInputLayoutText(cigs_per_day));
-            int cigsPerPack = Integer.parseInt(getInputLayoutText(cigs_per_pack));
+            int cigsPerDay = Integer.parseInt(getInputLayoutText(pack_gram_per_week));
             double yearsSmoked = Double.parseDouble(getInputLayoutText(years_smoked));
             double pricePerPack = Double.parseDouble(getInputLayoutText(price_per_pack));
+            int cigsPerPack     = Integer.parseInt(getInputLayoutText(cigs_per_pack));
 
             user.setName(name)
                     .setYearsSmoked(yearsSmoked)
                     .setCigsPerWeek(cigsPerDay)
                     .setPricePerPack(pricePerPack)
                     .setCigsPerPack(cigsPerPack);
+
 
             DBupdater.get().updateUser(user);
             onProfileUpdate.updateProfile(user.setName(name));

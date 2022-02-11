@@ -7,9 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.Tips;
-import dev.NevoSharabi.quitnow.fragment_tips_and_symptoms1;
-import dev.NevoSharabi.quitnow.fragment_tips_and_symptoms2;
+import dev.NevoSharabi.quitnow.tips.Tips;
+import dev.NevoSharabi.quitnow.tips.fragment_tips_and_symptoms1;
+import dev.NevoSharabi.quitnow.tips.fragment_tips_and_symptoms2;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

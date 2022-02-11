@@ -19,7 +19,6 @@ public class Refs {
     public static String getStorePicStoragePath(String fileName)     { return KEYS.STORE_PICS_REF + fileName.toLowerCase() + ".jpg"; }
     public static DatabaseReference getUsersRef()  {return getDBref(KEYS.USERS_REF);}
 
-    //=============================
 
    public static StorageReference getStorageRef(String fullFilePath){
         return FirebaseStorage.getInstance().getReference().getStorage().getReferenceFromUrl(fullFilePath);

@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.TipsAndSymptoms;
+import dev.NevoSharabi.quitnow.tips.TipsAndSymptoms;
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
 import dev.NevoSharabi.quitnow.dateBase.DBupdater;
 import dev.NevoSharabi.quitnow.profile.User;
@@ -102,8 +102,8 @@ public class ProgressFragment extends Fragment {
                 
 
 
-        
-        
+
+
     }
 
     private void loadRandomTip() {
