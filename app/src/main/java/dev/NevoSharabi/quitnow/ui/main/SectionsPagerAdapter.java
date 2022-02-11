@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import dev.NevoSharabi.quitnow.R;
+import dev.NevoSharabi.quitnow.fragment_tips_and_symptoms1;
+import dev.NevoSharabi.quitnow.fragment_tips_and_symptoms2;
+import dev.NevoSharabi.quitnow.page3;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -15,7 +18,7 @@ import dev.NevoSharabi.quitnow.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[] {R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[] {R.string.tab_text_1, R.string.tab_text_2,R.string.tab_text_3};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -27,7 +30,19 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+
+            switch (position) {
+                case 0:
+                    return  new fragment_tips_and_symptoms1();
+                case 1:
+                    return  new fragment_tips_and_symptoms2();
+
+                case 2:
+                    return  new page3();
+                default:
+                    return  new PlaceholderFragment();
+            }
+
     }
 
     @Nullable

@@ -1,6 +1,7 @@
 package dev.NevoSharabi.quitnow.progress;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import dev.NevoSharabi.quitnow.ActivitySplash;
 import dev.NevoSharabi.quitnow.MainActivity;
 import dev.NevoSharabi.quitnow.R;
+import dev.NevoSharabi.quitnow.TipsAndSymptoms;
 import dev.NevoSharabi.quitnow.dateBase.DBreader;
 import dev.NevoSharabi.quitnow.dateBase.DBupdater;
 import dev.NevoSharabi.quitnow.profile.User;
@@ -97,7 +99,8 @@ public class ProgressFragment extends Fragment {
         });
 
         quit_overview.setOnClickListener(v -> {
-            Utils.get().myStartActivity(getActivity(),MainActivity.class);;
+            Intent intent   = new Intent(getActivity(), TipsAndSymptoms.class);
+            getActivity().startActivity(intent);
                 });
                 
 
