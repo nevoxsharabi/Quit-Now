@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dev.NevoSharabi.quitnow.*;
-import dev.NevoSharabi.quitnow.myDateBase.DBreader;
-import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseUpDate;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;
 
@@ -53,7 +53,7 @@ public class RewardsFragment extends Fragment {
 
 
     void createRewards(List<Reward> rewards){
-        User user = DBreader.get().getUser();
+        User user = DataBaseReader.get().getUser();
         if(user == null) return;
         int time = (int) TimeUnit.MILLISECONDS.toDays(user.getRehabDuration());
         for (int i = 0; i < 19; i++) {
@@ -65,7 +65,7 @@ public class RewardsFragment extends Fragment {
                     .setUnlockDate(newDate);
             if(time > reward.getMax()) {
                     user.incrementCoins(1000 * i);
-                    DBupdater.get().updateUser(user);
+                    DataBaseUpDate.get().updateUser(user);
                 }
             rewards.add(reward);
         }

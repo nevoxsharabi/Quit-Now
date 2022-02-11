@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
-import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,8 +33,8 @@ import androidx.navigation.ui.NavigationUI;
 import java.util.Arrays;
 import java.util.List;
 
-import dev.NevoSharabi.quitnow.myDateBase.DBreader;
-import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseUpDate;
 import dev.NevoSharabi.quitnow.profile.CreateProfileActivity;
 import dev.NevoSharabi.quitnow.profile.OnProfileUpdate;
 import dev.NevoSharabi.quitnow.profile.User;
@@ -49,17 +48,13 @@ public class MainActivity extends AppCompatActivity implements
     private DrawerLayout drawerLayout;
     private NavigationView nav_view;
     private NavController navController;
-
-
     private ImageView main_drawer_btn;
-    private ImageView drawer_user_pic;
-
     private TextView main_lbl_title;
     private TextView drawer_lbl_userName;
     private TextView user_coins;
 
     private User user;
-    private DBreader dbReader;
+    private DataBaseReader dbReader;
     private Activity activity;
 
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
@@ -90,14 +85,14 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onStop() {
         super.onStop();
-        DBupdater.get().updateStatus();
+        DataBaseUpDate.get().updateStatus();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Dialogs.get().addContext(this);
-        DBupdater.get().updateStatus();
+        DataBaseUpDate.get().updateStatus();
     }
 
     public void createSignInIntent() {
@@ -136,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements
                         //user exists in database
                         Log.i("info", "user is not null");
                         Log.i("info", "im in readuserdata() UUID = " + user.getUid());
-                        dbReader = DBreader.get();
+                        dbReader = DataBaseReader.get();
                         user = dbReader.getUser();
                         if (!initServerConnection()) return;
                         setUserData();
@@ -171,11 +166,11 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private boolean initServerConnection() {
-        DBreader dbReader = DBreader.get();
+        DataBaseReader dbReader = DataBaseReader.get();
         if (!App.isNetworkAvailable()) {
             return false;
         } else if (dbReader.getUser() == null) {
-            DBreader.get().readUserData();
+            DataBaseReader.get().readUserData();
             Utils.get().myStartActivity(this, ActivitySplash.class);
             return false;
         }
@@ -189,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements
         main_lbl_title = findViewById(R.id.main_lbl_title);
         user_coins = findViewById(R.id.user_coins);
         drawer_lbl_userName = nav_view.getHeaderView(0).findViewById(R.id.drawer_lbl_userName);
-        drawer_user_pic = nav_view.getHeaderView(0).findViewById(R.id.drawer_user_pic);
+        ImageView drawer_user_pic = nav_view.getHeaderView(0).findViewById(R.id.drawer_user_pic);
     }
 
 

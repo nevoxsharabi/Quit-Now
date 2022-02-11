@@ -6,8 +6,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-import dev.NevoSharabi.quitnow.myDateBase.DBreader;
-import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseUpDate;
 
 import dev.NevoSharabi.quitnow.store.Store;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,7 +20,7 @@ public class App extends Application {
     private static Toast myToast;
     private static ConnectivityManager connectivityManager;
 
-    //====================================================
+
 
     @Override
     public void onCreate() {
@@ -28,9 +28,8 @@ public class App extends Application {
         context         = getApplicationContext();
         myToast         = Toast.makeText(context, "", Toast.LENGTH_SHORT);
         connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        //SharedPrefs     .initPrefs();
-        DBupdater       .initUpdater();
-        DBreader        .initReader();
+        DataBaseUpDate.initUpdater();
+        DataBaseReader.initReader();
         Utils           .initUtils();
         Store.initStore();
         Dialogs         .initDialogs();

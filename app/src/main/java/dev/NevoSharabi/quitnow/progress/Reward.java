@@ -8,9 +8,6 @@ public class Reward {
     private LocalDate unlockDate;
     private int maximum;
 
-
-    //============================
-
     public Reward() { }
 
     //============================
@@ -20,9 +17,6 @@ public class Reward {
     public Reward setUnlockDate(LocalDate unlockDate) { this.unlockDate = unlockDate; return this; }
 
     public Reward setMax(int maximum) { this.maximum = maximum; return this; }
-
-
-    //============================
 
     public String getRewardName() { return rewardName; }
 

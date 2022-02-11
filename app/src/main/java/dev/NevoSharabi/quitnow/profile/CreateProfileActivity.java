@@ -14,14 +14,12 @@ import java.util.HashMap;
 
 import dev.NevoSharabi.quitnow.MainActivity;
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.myDateBase.DBreader;
-import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseUpDate;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.Utils;
 
 public class CreateProfileActivity extends AppCompatActivity {
-    private String          currencySymbol;
-
     private Uri             filePathUri;
     private ImageView       user_profile_pic;
 
@@ -54,9 +52,8 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         continue_btn.setOnClickListener(v -> {
             User user = createUserData();
-            DBupdater.get()     .updateUser(user);
-            DBreader.get()      .readUserData();
-            //SharedPrefs.get().saveFirstLogin();
+            DataBaseUpDate.get()     .updateUser(user);
+            DataBaseReader.get()      .readUserData();
             Utils.get()         .myStartActivity(CreateProfileActivity.this, MainActivity.class);
 
         });

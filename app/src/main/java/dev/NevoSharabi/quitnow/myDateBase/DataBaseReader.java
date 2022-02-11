@@ -23,24 +23,24 @@ import java.util.List;
 
 import dev.NevoSharabi.quitnow.profile.User;
 
-public class DBreader {
+public class DataBaseReader {
 
-    private static DBreader instance;
+    private static DataBaseReader instance;
 
     private User user;
     private List rewards_info = new ArrayList<>();
 
-    //=============================
+
 
     public static void initReader() {
         if (instance == null) {
-            instance = new DBreader();
+            instance = new DataBaseReader();
             instance.readData();
         }
     }
 
 
-    public static DBreader get() {
+    public static DataBaseReader get() {
         return instance;
     }
 
@@ -56,7 +56,7 @@ public class DBreader {
 
 
     public void readUserData() {
-        Refs.getUsersRef().child(App.getLoggedUser().getUid())
+        Reference.getUsersRef().child(App.getLoggedUser().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -73,7 +73,7 @@ public class DBreader {
     //
 //    //=========================================
     public void readListData(String Ref, List list, Class ObjectClass) {
-        Refs.getDBref(Ref).addListenerForSingleValueEvent(new ValueEventListener() {
+        Reference.getDBref(Ref).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren())
@@ -90,13 +90,13 @@ public class DBreader {
         String ref = "";
         switch (key) {
             case KEYS.STORE:
-                ref = Refs.getStorePicStoragePath(fileName);
+                ref = Reference.getStorePicStoragePath(fileName);
                 break;
             case KEYS.PROFILE:
                 //ref = Refs.getProfilePicStoragePath(fileName);
                 break;
         }
-        return Refs.getStorageRef(ref);
+        return Reference.getStorageRef(ref);
     }
 
     /**

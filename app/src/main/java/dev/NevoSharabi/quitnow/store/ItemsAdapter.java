@@ -4,14 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-
-import dev.NevoSharabi.quitnow.myDateBase.DBreader;
-
-import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseUpDate;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.KEYS;
@@ -54,7 +50,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.StoreViewHol
         holder.store_item_title     .setText(storeItem.getTitle());
         holder.store_item_price     .setText(""+ storeItem.getPrice());
 
-        DBreader.get()      .readPic(KEYS.STORE,holder.store_item_photo, storeItem.getTitle());
+        DataBaseReader.get()      .readPic(KEYS.STORE,holder.store_item_photo, storeItem.getTitle());
 
         if(onCoinsChanged != null)
             holder.svc              .setOnClickListener(v -> beginPurchase(storeItem));
@@ -63,13 +59,13 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.StoreViewHol
     }
 
     private void beginPurchase(StoreItem storeItem){
-        User user = DBreader.get().getUser();
+        User user = DataBaseReader.get().getUser();
         if(storeItem.getPrice() > user.getCoins()){
             App.toast("Not Enough Coins!");
             return;
         }
         Store.get().buyItem(user, storeItem);
-        DBupdater.get().updateGiftBag(user);
+        DataBaseUpDate.get().updateGiftBag(user);
         onCoinsChanged.updateCoins();
     }
 

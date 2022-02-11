@@ -1,6 +1,5 @@
 package dev.NevoSharabi.quitnow.myDateBase;
 
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -9,10 +8,10 @@ import com.google.firebase.storage.StorageReference;
 
 import dev.NevoSharabi.quitnow.tools.KEYS;
 
-public class Refs {
+public class Reference {
     /**
      * get database reference by key
-     * @param url database ref (references found in dataManage.KEYS)
+     * @param url database reference
      */
     public static DatabaseReference getDBref(String url)    { return FirebaseDatabase.getInstance().getReferenceFromUrl(url); }
     public static DatabaseReference getGiftBagsRef()        { return getDBref(KEYS.GIFT_BAGS_REF); }

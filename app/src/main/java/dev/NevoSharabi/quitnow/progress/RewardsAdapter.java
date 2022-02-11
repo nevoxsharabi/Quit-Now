@@ -12,10 +12,8 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.myDateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
 import com.wajahatkarim3.easyflipview.EasyFlipView;
-
-import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -46,8 +44,8 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.RewardsV
 
 
     private void setHolderData(RewardsViewHolder holder, int position, Reward reward){
-        int time = (int)TimeUnit.MILLISECONDS.toDays(DBreader.get().getUser().getRehabDuration());
-        String reward_info = (String) DBreader.get().getRewardsInfo().get(position);
+        int time = (int)TimeUnit.MILLISECONDS.toDays(DataBaseReader.get().getUser().getRehabDuration());
+        String reward_info = (String) DataBaseReader.get().getRewardsInfo().get(position);
         holder.progressBar  .setMax(reward.getMax());
         holder.progressBar  .setProgress(time);
         holder.rewardText   .setText(reward.getRewardName());

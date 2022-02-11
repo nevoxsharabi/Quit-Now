@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.myDateBase.Refs;
+import dev.NevoSharabi.quitnow.myDateBase.Reference;
 import dev.NevoSharabi.quitnow.tools.App;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,7 +50,7 @@ public class GiftBagFragment extends Fragment {
     };
 
     private void updateBoughtItems(OnItemBought onItemBought) {
-        Refs.getGiftBagsRef()
+        Reference.getGiftBagsRef()
                 .child(App.getLoggedUser().getUid())
                     .addValueEventListener(new ValueEventListener() {
                         @Override

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import dev.NevoSharabi.quitnow.myDateBase.DBreader;
-import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseUpDate;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.KEYS;
@@ -23,7 +23,7 @@ public class Store {
     public static void initStore(){
         if(instance == null) {
             instance = new Store();
-            DBreader.get().readListData(KEYS.STORE_REF, instance.itemsList,StoreItem.class);
+            DataBaseReader.get().readListData(KEYS.STORE_REF, instance.itemsList,StoreItem.class);
         }
     }
 
@@ -61,9 +61,9 @@ public class Store {
         App.toast(item.getTitle() + " Bought!");
     }
     public void sendGift(User userToGift, StoreItem itemToGift){
-        User loggedUser = DBreader.get().getUser();
+        User loggedUser = DataBaseReader.get().getUser();
         addStoreItem(userToGift, itemToGift);
-        DBupdater dbUpdate =  DBupdater.get();
+        DataBaseUpDate dbUpdate =  DataBaseUpDate.get();
         dbUpdate.updateGiftBag(userToGift);
 
         if(itemToGift.getPrice() > 1)

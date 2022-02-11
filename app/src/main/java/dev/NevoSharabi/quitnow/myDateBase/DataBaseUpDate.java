@@ -1,24 +1,20 @@
 package dev.NevoSharabi.quitnow.myDateBase;
-
-
-
 import dev.NevoSharabi.quitnow.profile.*;
 
-public class DBupdater {
+public class DataBaseUpDate {
 
-    private static DBupdater instance;
+    private static DataBaseUpDate instance;
 
-    //=============================
 
     public static void initUpdater(){
         if(instance == null)
-            instance = new DBupdater();
+            instance = new DataBaseUpDate();
     }
 
     /**
      * gets the singleton
      */
-    public static DBupdater get() { return instance; }
+    public static DataBaseUpDate get() { return instance; }
 
     //=============================
 
@@ -26,20 +22,16 @@ public class DBupdater {
      * deletes all data , emails and profile pic
      * @param Uid user firebase id
      */public void deleteUserData(String Uid){
-        Refs.getUsersRef().child(Uid).removeValue();
-        Refs.getGiftBagsRef().child(Uid).removeValue();
-//        DBupdater.get().deleteProfilePic(Uid);
+        Reference.getUsersRef().child(Uid).removeValue();
+        Reference.getGiftBagsRef().child(Uid).removeValue();
     }
 
-
-
-    //=============================
 
     /**
      * saves user in database
      * @param user user for update (not for logged user)
      */
-    public void updateUser(User user){ Refs.getUsersRef().child(user.getUid()).setValue(user); }
+    public void updateUser(User user){ Reference.getUsersRef().child(user.getUid()).setValue(user); }
 
 
 
@@ -47,8 +39,8 @@ public class DBupdater {
      * saves current logged user in database
      */
     public void saveLoggedUser(){
-        User loggedUser = DBreader.get().getUser();
-        Refs.getUsersRef().child(loggedUser.getUid()).setValue(loggedUser);
+        User loggedUser = DataBaseReader.get().getUser();
+        Reference.getUsersRef().child(loggedUser.getUid()).setValue(loggedUser);
     }
 
     //=============================
@@ -57,7 +49,7 @@ public class DBupdater {
      * saves giftBag in db ref after changes in bag
      * @param user
      */
-    public void updateGiftBag(User user){ Refs.getGiftBagsRef().child(user.getUid()).setValue(user.getBoughtItems()); }
+    public void updateGiftBag(User user){ Reference.getGiftBagsRef().child(user.getUid()).setValue(user.getBoughtItems()); }
 
 
     /**
@@ -65,9 +57,9 @@ public class DBupdater {
      * on login and logout
      */
     public void updateStatus(){
-        User user = DBreader.get().getUser();
+        User user = DataBaseReader.get().getUser();
         if(user == null) return;
-        DBupdater.get().saveLoggedUser();
+        DataBaseUpDate.get().saveLoggedUser();
     }
 
 }

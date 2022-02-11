@@ -4,19 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.tips.TipsAndSymptoms;
-import dev.NevoSharabi.quitnow.myDateBase.DBreader;
-import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseUpDate;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.Utils;
@@ -34,8 +32,7 @@ public class ProgressFragment extends Fragment {
     private TextView progress_money;
     private MaterialButton reset_progress;
     private MaterialButton quit_overview;
-
-    private DBreader dbReader;
+    private DataBaseReader dbReader;
     private User user;
 
 
@@ -53,9 +50,8 @@ public class ProgressFragment extends Fragment {
 
 
         utils = Utils.get();
-        dbReader = DBreader.get();
+        dbReader = DataBaseReader.get();
         user = dbReader.getUser();
-
         findViews();
         setListeners();
         internetChecker.postDelayed(runnable, 200);
@@ -79,7 +75,7 @@ public class ProgressFragment extends Fragment {
     private void setListeners() {
         reset_progress.setOnClickListener(v -> {
             user.setDateStoppedSmoking(Calendar.getInstance().getTimeInMillis());
-            DBupdater.get().updateUser(user);
+            DataBaseUpDate.get().updateUser(user);
 
         });
 
@@ -87,10 +83,6 @@ public class ProgressFragment extends Fragment {
             Intent intent   = new Intent(getActivity(), TipsAndSymptoms.class);
             getActivity().startActivity(intent);
                 });
-                
-
-
-
 
     }
 
@@ -118,7 +110,7 @@ public class ProgressFragment extends Fragment {
         @Override
         public void run() {
             internetChecker.postDelayed(runnable, 1000);
-            user = DBreader.get().getUser();
+            user = DataBaseReader.get().getUser();
             if (user == null) return;
            progress_money.setText("Money saved: " + utils.formatNumber(user.moneySaved(), "##.#") + " "+ "$");
            updateProgressClock();

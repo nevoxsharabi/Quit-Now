@@ -1,7 +1,6 @@
 package dev.NevoSharabi.quitnow.profile;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,8 @@ import androidx.fragment.app.Fragment;
 
 import dev.NevoSharabi.quitnow.MainActivity;
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.myDateBase.DBreader;
-import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
+import dev.NevoSharabi.quitnow.myDateBase.DataBaseUpDate;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.Utils;
 
@@ -29,7 +28,6 @@ public class SettingsFragment extends Fragment {
     private View view;
 
     private ImageView user_profile_pic;
-    private Uri filePathUri;
     private TextInputLayout user_name;
     private TextInputLayout years_smoked;
     private TextInputLayout pack_gram_per_week;
@@ -58,7 +56,7 @@ public class SettingsFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         findViews();
-        user = DBreader.get().getUser();
+        user = DataBaseReader.get().getUser();
 
         if (!App.isNetworkAvailable() || user == null) return view;
 
@@ -85,7 +83,11 @@ public class SettingsFragment extends Fragment {
 
     private void setListeners() {
         // user_profile_pic    .setOnClickListener(v -> Utils.get().getImage(this));
-
+        delete_account      .setOnClickListener(v -> {
+            DataBaseUpDate.get()      .deleteUserData(user.getUid());
+            Utils           .get()      .myStartActivity(getActivity(), MainActivity.class);
+            FirebaseAuth    .getInstance()      .signOut();
+        });
         update_btn.setOnClickListener(v -> updateUserData());
 
         logout              .setOnClickListener(v -> {
@@ -132,7 +134,7 @@ public class SettingsFragment extends Fragment {
                     .setCigsPerPack(cigsPerPack);
 
 
-            DBupdater.get().updateUser(user);
+            DataBaseUpDate.get().updateUser(user);
             onProfileUpdate.updateProfile(user.setName(name));
 
             if (App.isNetworkAvailable()) App.toast("Data Updated!");
