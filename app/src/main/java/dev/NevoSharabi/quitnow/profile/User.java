@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import dev.NevoSharabi.quitnow.store.StoreItem;
-import dev.NevoSharabi.quitnow.tools.KEYS;
+
 
 public class User {
     private String  uid = "";

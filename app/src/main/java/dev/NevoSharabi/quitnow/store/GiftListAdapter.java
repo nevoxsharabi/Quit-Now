@@ -10,7 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DBreader;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.KEYS;
 
@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import dev.NevoSharabi.quitnow.profile.User;
 
 public class GiftListAdapter extends RecyclerView.Adapter<GiftListAdapter.GiftListViewHolder> {
 

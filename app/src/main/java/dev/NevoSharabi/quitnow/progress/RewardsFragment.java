@@ -9,29 +9,21 @@ import android.view.ViewGroup;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dev.NevoSharabi.quitnow.*;
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
-import dev.NevoSharabi.quitnow.dateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;
-//import com.example.Stopi.R;
-//import com.example.Stopi.dataBase.DBreader;
-//import com.example.Stopi.profile.User;
-//import com.example.Stopi.tools.App;
-//import com.example.Stopi.tools.KEYS;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class RewardsFragment extends Fragment {
-
     private View view;
     private RecyclerView rewards_list;
     private List<Reward> rewards;
@@ -42,9 +34,7 @@ public class RewardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_rewards, container, false);
-
         init_views();
-
         RewardsAdapter rewardsAdapter = new RewardsAdapter(rewards);
         rewards_list    .setLayoutManager(new GridLayoutManager(getContext(),2 ));
         rewards_list    .setAdapter(rewardsAdapter);
@@ -61,22 +51,19 @@ public class RewardsFragment extends Fragment {
         rewards = new ArrayList<>();
     }
 
-    //====================================================
 
     void createRewards(List<Reward> rewards){
         User user = DBreader.get().getUser();
         if(user == null) return;
         int time = (int) TimeUnit.MILLISECONDS.toDays(user.getRehabDuration());
-        for (int i = 1; i < 20; i++) {
+        for (int i = 0; i < 19; i++) {
             int max = (int)(Math.pow(i,2)+1);
             LocalDate newDate = LocalDate.now().plusDays(max);
-
             Reward reward = new Reward()
                     .setRewardName(max + " Days Clean!")
                     .setMax(max)
                     .setUnlockDate(newDate);
             if(time > reward.getMax()) {
-                reward.setUnlocked(true);
                     user.incrementCoins(1000 * i);
                     DBupdater.get().updateUser(user);
                 }

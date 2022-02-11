@@ -9,9 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DBreader;
 
-import dev.NevoSharabi.quitnow.dateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.KEYS;
@@ -22,7 +22,6 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
 import dev.NevoSharabi.quitnow.tools.Utils;
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.StoreViewHolder> {
@@ -57,9 +56,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.StoreViewHol
 
         DBreader.get()      .readPic(KEYS.STORE,holder.store_item_photo, storeItem.getTitle());
 
-        if(onCoinsChanged != null)  // store fragment
+        if(onCoinsChanged != null)
             holder.svc              .setOnClickListener(v -> beginPurchase(storeItem));
-        else                        // bought_items fragment
+        else
             holder.svc              .setOnClickListener(v -> Utils.get().onCardClick(holder.svc));
     }
 
@@ -71,7 +70,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.StoreViewHol
         }
         Store.get().buyItem(user, storeItem);
         DBupdater.get().updateGiftBag(user);
-        onCoinsChanged.updateWallet();
+        onCoinsChanged.updateCoins();
     }
 
 

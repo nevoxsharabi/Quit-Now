@@ -4,25 +4,20 @@ import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 import android.widget.Toast;
 
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
-import dev.NevoSharabi.quitnow.dateBase.DBupdater;
-import dev.NevoSharabi.quitnow.login.SharedPrefs;
+import dev.NevoSharabi.quitnow.myDateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
+
 import dev.NevoSharabi.quitnow.store.Store;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 
 public class App extends Application {
 
     private static Context context;
-
     private static Toast myToast;
-
     private static ConnectivityManager connectivityManager;
 
     //====================================================

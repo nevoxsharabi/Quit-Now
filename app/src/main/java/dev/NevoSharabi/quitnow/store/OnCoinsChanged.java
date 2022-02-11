@@ -1,6 +1,6 @@
 package dev.NevoSharabi.quitnow.store;
 
 public interface OnCoinsChanged {
-    void updateWallet();
+    void updateCoins();
 
 }

@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DBreader;
 import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.time.LocalDate;
@@ -47,19 +47,12 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.RewardsV
 
     private void setHolderData(RewardsViewHolder holder, int position, Reward reward){
         int time = (int)TimeUnit.MILLISECONDS.toDays(DBreader.get().getUser().getRehabDuration());
-        LocalDate date = reward.getUnlockDate();
-        String text;
         String reward_info = (String) DBreader.get().getRewardsInfo().get(position);
-        if(reward.isUnlocked())
-            text = "Unlocked!";
-        else
-            text = date.getMonth() +" - "+ date.getDayOfMonth() +" - "+ date.getYear();
-
         holder.progressBar  .setMax(reward.getMax());
         holder.progressBar  .setProgress(time);
         holder.rewardText   .setText(reward.getRewardName());
         holder.reward_info  .setText(reward_info != null ? reward_info : "");
-        //holder.unlock_date  .setText(text);
+
     }
 
     //====================================================

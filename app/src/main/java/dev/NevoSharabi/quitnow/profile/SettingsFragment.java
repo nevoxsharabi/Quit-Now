@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import dev.NevoSharabi.quitnow.MainActivity;
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
-import dev.NevoSharabi.quitnow.dateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.Utils;
 

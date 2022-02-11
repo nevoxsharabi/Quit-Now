@@ -6,8 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -36,22 +34,18 @@ import androidx.navigation.ui.NavigationUI;
 import java.util.Arrays;
 import java.util.List;
 
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
-import dev.NevoSharabi.quitnow.dateBase.DBupdater;
-import dev.NevoSharabi.quitnow.login.SharedPrefs;
+import dev.NevoSharabi.quitnow.myDateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
 import dev.NevoSharabi.quitnow.profile.CreateProfileActivity;
 import dev.NevoSharabi.quitnow.profile.OnProfileUpdate;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.store.OnCoinsChanged;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.Dialogs;
-import dev.NevoSharabi.quitnow.tools.KEYS;
-import dev.NevoSharabi.quitnow.tools.OnFragmentTransaction;
 import dev.NevoSharabi.quitnow.tools.Utils;
 
 public class MainActivity extends AppCompatActivity implements
-        OnProfileUpdate, OnCoinsChanged,
-        OnFragmentTransaction {
+        OnProfileUpdate, OnCoinsChanged{
     private DrawerLayout drawerLayout;
     private NavigationView nav_view;
     private NavController navController;
@@ -83,10 +77,6 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*if (SharedPrefs.get().isFirstLogin()) {
-            Utils.get().myStartActivity(this, CreateProfileActivity.class);
-            return;
-        }*/
         activity = this;
         createSignInIntent();
 
@@ -113,23 +103,19 @@ public class MainActivity extends AppCompatActivity implements
     public void createSignInIntent() {
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.PhoneBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build());
 
-        // Create and launch sign-in intent
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
                 .build();
         signInLauncher.launch(signInIntent);
-        // [END auth_fui_create_intent]
+
     }
 
     private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
-        IdpResponse response = result.getIdpResponse();
         Log.i("info", "==========i am before login check=====");
         if (result.getResultCode() == RESULT_OK) {
-
             Log.i("info", "==========successfully logged in=====");
             user = null;
             FirebaseUser firebase_user = FirebaseAuth.getInstance().getCurrentUser();
@@ -146,7 +132,6 @@ public class MainActivity extends AppCompatActivity implements
                         Log.i("info", "im in readuserdata() UUID = " + firebase_user.getUid());
                         Intent intent   = new Intent(activity, CreateProfileActivity.class);
                         activity.startActivity(intent);
-                        //Utils.get().myStartActivity(activity, CreateProfileActivity.class);
                     } else {
                         //user exists in database
                         Log.i("info", "user is not null");
@@ -170,6 +155,15 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    private void initDrawer() {
+        nav_view.setItemIconTintList(null);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.navHost_fragment);
+        navController = navHostFragment.getNavController();
+        NavigationUI.setupWithNavController(nav_view, navController);
+        main_drawer_btn.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> main_lbl_title.setText(destination.getLabel()));
+    }
+
     private void setUserData() {
         drawer_lbl_userName.setText(user.getName());
         user_coins.setText("Coins - " + user.getCoins());
@@ -180,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements
         DBreader dbReader = DBreader.get();
         if (!App.isNetworkAvailable()) {
             return false;
-        } else if (dbReader.getUser() == null) { // if data hasn't arrived from db yet
+        } else if (dbReader.getUser() == null) {
             DBreader.get().readUserData();
             Utils.get().myStartActivity(this, ActivitySplash.class);
             return false;
@@ -199,18 +193,11 @@ public class MainActivity extends AppCompatActivity implements
     }
 
 
-    private void initDrawer() {
-        nav_view.setItemIconTintList(null);
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.navHost_fragment);
-        navController = navHostFragment.getNavController();
-        NavigationUI.setupWithNavController(nav_view, navController);
-        main_drawer_btn.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> main_lbl_title.setText(destination.getLabel()));
-    }
+
 
 
     @Override
-    public void updateWallet() { // called when item is bought in store or when daily login performed
+    public void updateCoins() { // called when item is bought in store or when daily login performed
         user_coins.setText("Coins - " + dbReader.getUser().getCoins());
     }
 
@@ -220,9 +207,5 @@ public class MainActivity extends AppCompatActivity implements
         drawer_lbl_userName.setText(user.getName());
     }
 
-    @Override
-    public void setFragmentToView(Fragment fragment, int layout_id) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(layout_id, fragment).commit();
-    }
+
 }

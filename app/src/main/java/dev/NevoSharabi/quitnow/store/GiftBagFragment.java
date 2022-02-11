@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.dateBase.Refs;
+import dev.NevoSharabi.quitnow.myDateBase.Refs;
 import dev.NevoSharabi.quitnow.tools.App;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

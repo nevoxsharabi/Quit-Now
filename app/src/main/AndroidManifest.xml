@@ -9,26 +9,29 @@
     <application
         android:name=".tools.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/img_icon"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/img_icon"
         android:supportsRtl="false"
         android:theme="@style/Theme.QuitNow">
+
         <activity
             android:name=".tips.TipsAndSymptoms"
-            android:exported="false"
             android:label="@string/title_activity_tips_and_symptoms"
             android:theme="@style/Theme.QuitNow.NoActionBar" />
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="fullSensor"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.QuitNow.NoActionBar" />
+
+
         <activity
             android:name=".ActivitySplash"
             android:exported="true"
             android:screenOrientation="fullSensor"
-            android:theme="@style/Theme.QuitNow.NoActionBar" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/title_activity_main"
             android:theme="@style/Theme.QuitNow.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".profile.CreateProfileActivity"
             android:label="ProfileActivity"

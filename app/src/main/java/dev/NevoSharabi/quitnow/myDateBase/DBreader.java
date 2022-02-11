@@ -1,4 +1,4 @@
-package dev.NevoSharabi.quitnow.dateBase;
+package dev.NevoSharabi.quitnow.myDateBase;
 
 import android.util.Log;
 import android.widget.ImageView;
@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.store.StoreItem;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.KEYS;
 
@@ -40,9 +39,7 @@ public class DBreader {
         }
     }
 
-    /**
-     * gets the singleton
-     */
+
     public static DBreader get() {
         return instance;
     }
@@ -52,9 +49,9 @@ public class DBreader {
         if (App.getLoggedUser() != null)
             get().readUserData();
         for (int i = 1; i < 20; i++) {
-            rewards_info.add("congratulations you earned " + i*1000 + "$!!" );
+            rewards_info.add("congratulations you earned " + i*1000 + " Coins!" );
         }
-        //get().readListData(KEYS.REWARDS_INFO_REF, rewards_info, String.class);
+
     }
 
 
@@ -64,7 +61,6 @@ public class DBreader {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         user = dataSnapshot.getValue(User.class);
-                   //     Log.i("info", "im in readuserdata() UUID = " + user.getUid());
 
                     }
 

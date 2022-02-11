@@ -1,4 +1,4 @@
-package dev.NevoSharabi.quitnow.login;
+package dev.NevoSharabi.quitnow;
 
 import android.content.Context;
 import android.content.SharedPreferences;

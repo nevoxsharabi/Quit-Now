@@ -15,16 +15,14 @@ import androidx.fragment.app.Fragment;
 
 import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.tips.TipsAndSymptoms;
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
-import dev.NevoSharabi.quitnow.dateBase.DBupdater;
+import dev.NevoSharabi.quitnow.myDateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.tools.App;
-import dev.NevoSharabi.quitnow.tools.OnFragmentTransaction;
 import dev.NevoSharabi.quitnow.tools.Utils;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.Calendar;
-import java.util.List;
 
 import java.util.concurrent.TimeUnit;
 
@@ -36,14 +34,8 @@ public class ProgressFragment extends Fragment {
     private TextView progress_money;
     private MaterialButton reset_progress;
     private MaterialButton quit_overview;
-    private MaterialButton tips_and_symptoms;
-
-//    private SmokerDataFragment pastData;
-//    private SmokerDataFragment futureData;
-    private OnFragmentTransaction onFragmentTransaction;
 
     private DBreader dbReader;
-    private List tips;
     private User user;
 
 
@@ -52,7 +44,6 @@ public class ProgressFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        onFragmentTransaction = (OnFragmentTransaction) context;
     }
 
     @Override
@@ -60,17 +51,14 @@ public class ProgressFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_progress, container, false);
 
-//        pastData = SmokerDataFragment.newInstance(Section.Before);
-//        futureData = SmokerDataFragment.newInstance(Section.After);
+
         utils = Utils.get();
         dbReader = DBreader.get();
-//        tips = dbReader.getTips();
         user = dbReader.getUser();
 
         findViews();
         setListeners();
         internetChecker.postDelayed(runnable, 200);
-
         App.isNetworkAvailable();
 
 
@@ -103,10 +91,6 @@ public class ProgressFragment extends Fragment {
 
 
 
-
-    }
-
-    private void loadRandomTip() {
 
     }
 

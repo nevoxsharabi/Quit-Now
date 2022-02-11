@@ -1,7 +1,5 @@
 package dev.NevoSharabi.quitnow.profile;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -16,10 +14,8 @@ import java.util.HashMap;
 
 import dev.NevoSharabi.quitnow.MainActivity;
 import dev.NevoSharabi.quitnow.R;
-import dev.NevoSharabi.quitnow.dateBase.DBreader;
-import dev.NevoSharabi.quitnow.dateBase.DBupdater;
-import dev.NevoSharabi.quitnow.login.SharedPrefs;
-import dev.NevoSharabi.quitnow.progress.ProgressFragment;
+import dev.NevoSharabi.quitnow.myDateBase.DBreader;
+import dev.NevoSharabi.quitnow.myDateBase.DBupdater;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.Utils;
 

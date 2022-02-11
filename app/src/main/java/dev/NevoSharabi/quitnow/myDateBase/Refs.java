@@ -1,4 +1,4 @@
-package dev.NevoSharabi.quitnow.dateBase;
+package dev.NevoSharabi.quitnow.myDateBase;
 
 
 import com.google.firebase.database.DatabaseReference;
