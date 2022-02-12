@@ -47,8 +47,6 @@ public class ProgressFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_progress, container, false);
-
-
         utils = Utils.get();
         dbReader = DataBaseReader.get();
         user = dbReader.getUser();

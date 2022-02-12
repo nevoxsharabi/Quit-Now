@@ -27,9 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import androidx.navigation.ui.NavigationUI;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements
     private TextView main_lbl_title;
     private TextView drawer_lbl_userName;
     private TextView user_coins;
-
     private User user;
     private DataBaseReader dbReader;
     private Activity activity;
@@ -77,8 +74,6 @@ public class MainActivity extends AppCompatActivity implements
 
         findViews();
         initDrawer();
-
-
 
     }
 
@@ -109,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
-        Log.i("info", "==========i am before login check=====");
         if (result.getResultCode() == RESULT_OK) {
             Log.i("info", "==========successfully logged in=====");
             user = null;
@@ -117,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference reference_users = database.getReference("Users");
             reference_users.child(firebase_user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //getting user from database if exists
@@ -133,15 +128,14 @@ public class MainActivity extends AppCompatActivity implements
                         Log.i("info", "im in readuserdata() UUID = " + user.getUid());
                         dbReader = DataBaseReader.get();
                         user = dbReader.getUser();
+                        //DataBaseUpDate.get().updateStatus();
                         if (!initServerConnection()) return;
                         setUserData();
                     }
-
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
                 }
             });
 
@@ -162,7 +156,6 @@ public class MainActivity extends AppCompatActivity implements
     private void setUserData() {
         drawer_lbl_userName.setText(user.getName());
         user_coins.setText("Coins - " + user.getCoins());
-        //dbReader.get()      .readPicNoCache(KEYS.PROFILE, drawer_user_pic, user.getUid());
     }
 
     private boolean initServerConnection() {
@@ -184,11 +177,7 @@ public class MainActivity extends AppCompatActivity implements
         main_lbl_title = findViewById(R.id.main_lbl_title);
         user_coins = findViewById(R.id.user_coins);
         drawer_lbl_userName = nav_view.getHeaderView(0).findViewById(R.id.drawer_lbl_userName);
-        ImageView drawer_user_pic = nav_view.getHeaderView(0).findViewById(R.id.drawer_user_pic);
     }
-
-
-
 
 
     @Override

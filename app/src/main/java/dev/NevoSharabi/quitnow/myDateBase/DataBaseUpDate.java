@@ -16,10 +16,9 @@ public class DataBaseUpDate {
      */
     public static DataBaseUpDate get() { return instance; }
 
-    //=============================
+
 
     /**
-     * deletes all data , emails and profile pic
      * @param Uid user firebase id
      */public void deleteUserData(String Uid){
         Reference.getUsersRef().child(Uid).removeValue();
