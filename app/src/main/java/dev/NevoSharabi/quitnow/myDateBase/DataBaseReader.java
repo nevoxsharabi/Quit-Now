@@ -45,7 +45,7 @@ public class DataBaseReader {
         if (App.getLoggedUser() != null)
             get().readUserData();
         for (int i = 1; i < 20; i++) {
-            rewards_info.add("congratulations you earned " + i*1000 + " Coins!" );
+            rewards_info.add("congratulation you earned " + i*1000 + " Coins!" );
         }
 
     }
@@ -102,9 +102,6 @@ public class DataBaseReader {
     }
 
     /**
-     * read photo from server even if in cache
-     *
-     * @param key       STORE = 1 , PROFILE = 2 found in KEYS
      * @param imageView imageView to load into
      * @param fileName  name of the file to load
      */
@@ -121,7 +118,6 @@ public class DataBaseReader {
     public User getUser() {
         return user;
     }
-
     public List getRewardsInfo() {
         return rewards_info;
     }

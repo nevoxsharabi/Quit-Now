@@ -43,7 +43,6 @@ public class RewardsFragment extends Fragment {
         return view;
     }
 
-    //====================================================
 
     void init_views(){
         rewards_list = view.findViewById(R.id.rewards_list);
