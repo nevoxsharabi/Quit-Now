@@ -1,6 +1,6 @@
 package dev.NevoSharabi.quitnow.profile;
 
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -20,7 +20,7 @@ import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.Utils;
 
 public class CreateProfileActivity extends AppCompatActivity {
-    private Uri             filePathUri;
+
     private ImageView       user_profile_pic;
 
     private TextInputLayout user_name;
@@ -30,11 +30,6 @@ public class CreateProfileActivity extends AppCompatActivity {
     private TextInputLayout cigs_per_pack;
 
     private MaterialButton  continue_btn;
-
-
-
-
-
 
 
 
@@ -48,8 +43,6 @@ public class CreateProfileActivity extends AppCompatActivity {
 
 
     private void setListeners() {
-        //user_profile_pic.setOnClickListener(v -> Utils.get().getImage(this));
-
         continue_btn.setOnClickListener(v -> {
             User user = createUserData();
             DataBaseUpDate.get()     .updateUser(user);
@@ -78,12 +71,13 @@ public class CreateProfileActivity extends AppCompatActivity {
         double  yearsSmoked         = Double.parseDouble(0 + years_smoked.getEditText().getText().toString());
         double  pricePerPack        = Double.parseDouble(0 + price_per_pack.getEditText().getText().toString());
         int     CigsPerWeek          = Integer.parseInt(0 + cigsPerWeek.getEditText().getText().toString());
-
+        int cigsPerPack         = Integer.parseInt(0 + cigs_per_pack.getEditText().getText().toString());
         return new User().setUid(App.getLoggedUser().getUid())
                 .setName(name)
                 .setYearsSmoked(yearsSmoked)
                 .setCigsPerWeek(CigsPerWeek)
                 .setPricePerPack(pricePerPack)
+                .setCigsPerPack(cigsPerPack)
                 .setCoins(2000)
                 .setDateStoppedSmoking(dateStoppedSmoking)
                 .setBoughtItems(new HashMap<>());

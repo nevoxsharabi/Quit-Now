@@ -10,8 +10,6 @@ import com.bumptech.glide.signature.ObjectKey;
 
 import dev.NevoSharabi.quitnow.R;
 import dev.NevoSharabi.quitnow.tools.App;
-import dev.NevoSharabi.quitnow.tools.KEYS;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -29,8 +27,6 @@ public class DataBaseReader {
 
     private User user;
     private List rewards_info = new ArrayList<>();
-
-
 
     public static void initReader() {
         if (instance == null) {
@@ -70,10 +66,8 @@ public class DataBaseReader {
                 });
     }
 
-    //
-//    //=========================================
     public void readListData(String Ref, List list, Class ObjectClass) {
-        Reference.getDBref(Ref).addListenerForSingleValueEvent(new ValueEventListener() {
+        Reference.getDataBaseRef(Ref).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren())
@@ -87,15 +81,7 @@ public class DataBaseReader {
     }
 
     private StorageReference photoPathRef(int key, String fileName) {
-        String ref = "";
-        switch (key) {
-            case KEYS.STORE:
-                ref = Reference.getStorePicStoragePath(fileName);
-                break;
-            case KEYS.PROFILE:
-                //ref = Refs.getProfilePicStoragePath(fileName);
-                break;
-        }
+        String  ref = Reference.getStorePicStoragePath(fileName);
         return Reference.getStorageRef(ref);
     }
 
@@ -132,12 +118,9 @@ public class DataBaseReader {
                 .signature(new ObjectKey(System.currentTimeMillis()))
                 .into(imageView);
     }
-    //=========================================
-
     public User getUser() {
         return user;
     }
-
 
     public List getRewardsInfo() {
         return rewards_info;

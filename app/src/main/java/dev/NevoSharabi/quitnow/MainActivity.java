@@ -8,14 +8,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
@@ -30,13 +28,13 @@ import com.google.firebase.database.ValueEventListener;
 import androidx.navigation.ui.NavigationUI;
 import java.util.Arrays;
 import java.util.List;
-
 import dev.NevoSharabi.quitnow.myDateBase.DataBaseReader;
 import dev.NevoSharabi.quitnow.myDateBase.DataBaseUpDate;
 import dev.NevoSharabi.quitnow.profile.CreateProfileActivity;
 import dev.NevoSharabi.quitnow.profile.OnProfileUpdate;
 import dev.NevoSharabi.quitnow.profile.User;
 import dev.NevoSharabi.quitnow.store.OnCoinsChanged;
+import dev.NevoSharabi.quitnow.tools.ActivitySplash;
 import dev.NevoSharabi.quitnow.tools.App;
 import dev.NevoSharabi.quitnow.tools.Dialogs;
 import dev.NevoSharabi.quitnow.tools.Utils;
@@ -68,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         activity = this;
         createSignInIntent();
 
@@ -93,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements
     public void createSignInIntent() {
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
+                new AuthUI.IdpConfig.PhoneBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build());
 
         Intent signInIntent = AuthUI.getInstance()
@@ -128,8 +126,8 @@ public class MainActivity extends AppCompatActivity implements
                         Log.i("info", "im in readuserdata() UUID = " + user.getUid());
                         dbReader = DataBaseReader.get();
                         user = dbReader.getUser();
-                        //DataBaseUpDate.get().updateStatus();
-                        if (!initServerConnection()) return;
+                        DataBaseUpDate.get().updateStatus();
+                        if (!initConnection()) return;
                         setUserData();
                     }
                 }
@@ -138,7 +136,6 @@ public class MainActivity extends AppCompatActivity implements
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
-
         } else {
             Log.i("info", "==========didn't login=====");
         }
@@ -158,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements
         user_coins.setText("Coins - " + user.getCoins());
     }
 
-    private boolean initServerConnection() {
+    private boolean initConnection() {
         DataBaseReader dbReader = DataBaseReader.get();
         if (!App.isNetworkAvailable()) {
             return false;
@@ -187,7 +184,6 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void updateProfile(User user) {
-        // dbReader.get().readPicNoCache(KEYS.PROFILE, drawer_user_pic,user.getUid());
         drawer_lbl_userName.setText(user.getName());
     }
 

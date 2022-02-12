@@ -38,7 +38,6 @@ public class RewardsFragment extends Fragment {
         RewardsAdapter rewardsAdapter = new RewardsAdapter(rewards);
         rewards_list    .setLayoutManager(new GridLayoutManager(getContext(),2 ));
         rewards_list    .setAdapter(rewardsAdapter);
-
         if(App.isNetworkAvailable()) createRewards(rewards);
 
         return view;

@@ -41,6 +41,31 @@
         <entry key="..\:/Users/nevox/AndroidStudioProjects/QuitNow/app/src/main/res/layout/nav_header.xml" value="0.1" />
         <entry key="..\:/Users/nevox/AndroidStudioProjects/QuitNow/app/src/main/res/menu/nav_drawer_menu.xml" value="0.1" />
         <entry key="..\:/Users/nevox/AndroidStudioProjects/QuitNow/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/drawable-v24/ic_gift_bag.xml" value="0.1645" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/drawable-v24/ic_menu_button.xml" value="0.1645" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/drawable-v24/ic_progress.xml" value="0.1645" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/drawable-v24/ic_rewards.xml" value="0.1645" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/drawable-v24/ic_store.xml" value="0.1645" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/drawable/background.xml" value="0.1645" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1645" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/drawable/ic_settings.xml" value="0.1645" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/activity_main.xml" value="0.203125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/activity_main2.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/activity_tips_and_symptoms.xml" value="0.3188405797101449" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/create_profile.xml" value="0.22" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/fragment_gift_bag.xml" value="0.203125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/fragment_progress.xml" value="0.203125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/fragment_rewards.xml" value="0.203125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/fragment_settings.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/fragment_store.xml" value="0.203125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/fragment_tips_and_symptoms1.xml" value="0.203125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/fragment_tips_and_symptoms2.xml" value="0.203125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/item_gift.xml" value="0.2453125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/item_reward.xml" value="0.203125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/item_store.xml" value="0.3" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/layout/nav_header.xml" value="0.203125" />
+        <entry key="..\:/Users/nevox/Downloads/QuitNow/app/src/main/res/menu/nav_drawer_menu.xml" value="0.2453125" />
       </map>
     </option>
   </component>

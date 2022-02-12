@@ -7,7 +7,7 @@
     <string name="Continue" />
     <string name="full_name">Full Name</string>
     <string name="cigarettes_per_pack">Cigarettes Per Pack</string>
-    <string name="welcome">Welcome!</string>
+    <string name="welcome">Welcome</string>
 
 
     <!-- Fragments -->
@@ -29,7 +29,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="cigarettes_per_week">Cigarettes/Gram Per Week</string>
     <string name="symptoms">symptoms</string>
-    <string name="coins_1000">Coins - 1000</string>
+    <string name="coins_2000">Coins - 2000</string>
     <string name="tips_and_symptoms">tips and symptoms</string>
     <string name="quit_overview">quit_overview</string>
     <string name="you_ve_stayed_clean_for">you\'ve stayed clean for:</string>
@@ -41,7 +41,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="weed_phase">HOW TO CONTINUE YOUR PROGRESS Circumstances that may provoke relapses were pointed out in the above three phases.\n These circumstances will remain treacherous and probably provoke situations where you feel it as your human right to have a relapse, so don\'t lose your intellectual control.\n  Try to change your lifestyle. You have to prepare yourself! How are you going to tell your friends why you have quit smoking cannabis?\n  Try to develop daily and weekly plans, create new routines. Create a plan of actions for stressful situations. Try to establish new relationships. Try to be conscious of the qualitative value in your relationships. Try to establish realistic goals, to make your life manageable. Try to avoid situations and places that will lead to a relapse. If and when you get cravings, try to find the origin. You don\'t have to prove that you can abstain by consciously seeking old places of abuse. Once in a while it is important to focus on what made you decide to quit.
         Try to establish contact with someone who understands the process of change.</string>
-    <string name="ciggrate_phase">30 minutes to 4 hours: The effects from the nicotine will wear off and you’ll start to crave another cigarette.\n\n10 hours: You’ll be very restless, physically craving a cigarette, and wondering how to fill the time.\nYou may feel sad and hopeless.\n\n24 hours: Irritability kicks in and your appetite increases.\n\n2 days: You’ll have headaches as the nicotine leaves your system.\n\n3 days: The nicotine should be gone now. Your cravings taper off but anxiety will start to rise.\n\n week: You made it a week. Pat yourself on the back, you\'ve made it through the worst. Keep avoiding those triggers.\n\n2 to 4 weeks: You still won’t have much energy, but the brain fog will be clearing up and your appetite will settle down. Your cough, depression, and anxiety will also improve. \n\n5 weeks on: The challenge now is keeping a strong mental game.</string>
+    <string name="ciggrate_phase">30 minutes to 4 hours: The effects from the nicotine will wear off and you’ll start to crave another cigarette.\n\n10 hours: You’ll be very restless, physically craving a cigarette, and wondering how to fill the time.\nYou may feel sad and hopeless.\n\n24 hours: Irritability kicks in and your appetite increases.\n\n2 days: You’ll have headaches as the nicotine leaves your system.\n\n3 days: The nicotine should be gone now. Your cravings taper off but anxiety will start to rise.\n\nweek: You made it a week. Pat yourself on the back, you\'ve made it through the worst. Keep avoiding those triggers.\n\n2 to 4 weeks: You still won’t have much energy, but the brain fog will be clearing up and your appetite will settle down. Your cough, depression, and anxiety will also improve. \n\n5 weeks on: The challenge now is keeping a strong mental game.</string>
     <string name="cigarettes_gram_per_week">Pack/Gram Per Week</string>
     <string name="title_activity_quit_phase">QuitPhase</string>
     <string name="tips">Phase 1: Medical Focus\nDon\'t make the decision never to smoke again.\nMake the decision to abstain today. Tomorrow, you then make the decision to abstain that day, and so on.\nRelapses during this phase is mainly a reaction to avoiding the above listed withdrawal symptoms. Don\'t forget, these symptoms are only temporary. Notice even the slightest change of your perception of your immediate social environment. Consider the ways in which you change. Compare your way of functioning, now and under the influence of cannabis. Ask your friends or relatives if they have noticed any changes</string>
@@ -55,5 +55,18 @@ Compare your old cannabis-related notions about a "normal" life, with how you lo
     <string name="tip3">Make non-smoking friends: \n When you\'re at a party, stick with the non-smokers.  \"When you look at the smokers, don\'t envy them, Think of what they\'re doing as a bit strange – lighting a small white tube and breathing in smoke.\"</string>
     <string name="tip4">Make a list of reasons to quit:\n  Keep reminding yourself why you made the decision to give up. Make a list of the reasons and read it when you need support.</string>
     <string name="tip5">Change your drink:\n  Fizzy drinks, alcohol, cola, tea and coffee all make cigarettes taste better.  So when you\'re out, drink more water and juice. Some people find simply changing their drink (for example, switching from wine to a vodka and tomato juice) affects their need to reach for a cigarette.</string>
+    <string name="continue_reg">Continue</string>
+    <string name="years_smoked">Years Smoked</string>
+    <string name="reset_progress">reset progress</string>
+    <string name="quit_phase_overview">quit phase overview</string>
+    <string name="so_far_you_saved">so far you saved:</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="user_name">User Name</string>
+    <string name="years_of_smoking">Years of Smoking</string>
+    <string name="price_per_pack_gram">Price Per Pack/Gram</string>
+    <string name="update">Update</string>
+    <string name="logout">logout</string>
+    <string name="delete_account">delete account</string>
+    <string name="quitting_phases">Quitting phases</string>
 
 </resources>

@@ -10,7 +10,6 @@ public class Reward {
 
     public Reward() { }
 
-    //============================
 
     public Reward setRewardName(String rewardName) { this.rewardName = rewardName; return this; }
 

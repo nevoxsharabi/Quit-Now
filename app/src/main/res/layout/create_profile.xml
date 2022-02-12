@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome"
-        android:textSize="60sp"
+        android:textSize="55sp"
         style="@style/text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/text"
-        android:text="Fill in below fields"
-        android:textSize="30sp"
+        android:text="to Quit Now"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -34,7 +34,7 @@
         android:id="@+id/user_profile_pic"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:src="@drawable/img_default_pic"
+        android:src="@drawable/crate_prof_pic"
         android:fitsSystemWindows="true"
         app:layout_constraintBottom_toTopOf="@+id/user_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +56,7 @@
             android:ems="10"
             android:hint="@string/full_name"
             android:inputType="text"
-            android:textColor="@color/teal_700" />
+            android:textColor="?colorOnSecondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -73,7 +73,7 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Years Smoked"
+            android:hint="@string/years_smoked"
             android:inputType="numberDecimal"
             android:textColor="?colorOnSecondary" />
 
@@ -134,7 +134,7 @@
             android:textSize="15sp"
             android:hint="@string/price_per_pack"
             android:inputType="numberDecimal"
-            android:textColor="@color/teal_200" />
+            android:textColor="?colorOnSecondary" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,7 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         style="@style/ButtonDesign"
-        android:text="Continue"
+        android:text="@string/continue_reg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

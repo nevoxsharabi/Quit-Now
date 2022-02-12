@@ -25,15 +25,6 @@ public class User {
     public User(){ }
 
 
-    public String getUserId() {
-        return uid;
-    }
-
-
-
-
-
-
 
     public double cigsNotSmoked(){ return (TimeUnit.MILLISECONDS.toHours(getRehabDuration())) * cigsPerWeek/7/24; }
 
@@ -63,8 +54,6 @@ public class User {
 
     public User setDateStoppedSmoking(long dateStoppedSmoking) { this.dateStoppedSmoking = dateStoppedSmoking; return this; }
 
-    public User setLoggedToday(long loggedToday) { this.loggedToday = loggedToday; return this;}
-
     public User setBoughtItems(HashMap<String,StoreItem> boughtItems) { this.boughtItems = boughtItems; return this; }
 
 
@@ -87,9 +76,6 @@ public class User {
     public int getCoins() { return coins; }
 
     public long getDateStoppedSmoking() { return dateStoppedSmoking; }
-
-    public long getLoggedToday() { return loggedToday; }
-
 
     public long getRehabDuration(){ return Calendar.getInstance().getTimeInMillis() - dateStoppedSmoking; }
 

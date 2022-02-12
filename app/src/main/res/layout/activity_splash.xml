@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".ActivitySplash">
+    android:background="@drawable/splash"
+    tools:context=".tools.ActivitySplash">
 
     <ImageView
         android:id="@+id/splash_IMG_logo"
@@ -15,21 +15,12 @@
         android:layout_centerInParent="true"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/img_icon"
+        android:src="@drawable/splash_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/loading_bar"
-        android:layout_width="50dp"
-        android:layout_height="100dp"
-        android:indeterminateOnly="true"
-        android:rotation="-90"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splash_app_name" />
 
     <TextView
         android:id="@+id/splash_app_name"

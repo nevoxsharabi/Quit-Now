@@ -37,12 +37,12 @@
 
                 <ProgressBar
                     android:id="@+id/reward_progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="?android:attr/progressBarStyleHorizontal"
                     android:indeterminate="false"
                     android:padding="20dp"
-                    android:progressTint="?colorPrimary"
+                    android:progressTint="#76FF03"
                     android:scaleY="2.5"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -110,7 +110,7 @@ public class ProgressFragment extends Fragment {
             internetChecker.postDelayed(runnable, 1000);
             user = DataBaseReader.get().getUser();
             if (user == null) return;
-           progress_money.setText("Money saved: " + utils.formatNumber(user.moneySaved(), "##.#") + " "+ "$");
+           progress_money.setText("so far you saved: " + utils.formatNumber(user.moneySaved(), "##.#") + " "+ "$");
            updateProgressClock();
         }
     };

@@ -10,14 +10,15 @@
 
     <TextView
         android:id="@+id/profile_pic_lbl"
+        style="@style/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/title"
         android:paddingTop="20dp"
-        android:text="Profile Picture"
+        android:text="@string/profile_picture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/user_profile_pic"
@@ -50,7 +51,7 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="User Name"
+                android:hint="@string/user_name"
                 android:inputType="text"
                 android:textColor="?colorOnSecondary" />
 
@@ -83,7 +84,7 @@
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Years of Smoking"
+                android:hint="@string/years_of_smoking"
                 android:inputType="numberDecimal"
                 android:textColor="?colorOnSecondary" />
 
@@ -121,7 +122,7 @@
                 android:layout_centerInParent="true"
                 android:ems="10"
                 android:textSize="15sp"
-                android:hint="Price Per Pack/Gram"
+                android:hint="@string/price_per_pack_gram"
                 android:inputType="numberDecimal"
                 android:textColor="?colorOnSecondary" />
 
@@ -129,14 +130,6 @@
 
     </LinearLayout>
 
-<!--    <FrameLayout-->
-<!--        android:id="@+id/dummy_layout"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textsLinear" />-->
 
     <LinearLayout
         android:id="@+id/buttons_linear"
@@ -153,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:text="Update"
+            android:text="@string/update"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/settings_logout"
             app:layout_constraintStart_toStartOf="parent"
@@ -164,7 +157,7 @@
             style="@style/ButtonDesign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="logout"
+            android:text="@string/logout"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -179,7 +172,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         style="@style/ButtonDesign"
-        android:text="delete account"
+        android:text="@string/delete_account"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

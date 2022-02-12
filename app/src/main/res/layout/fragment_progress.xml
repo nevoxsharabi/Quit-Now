@@ -55,7 +55,7 @@
         android:backgroundTint="#B30000"
         android:padding="10dp"
         android:layout_margin="20dp"
-        android:text="reset progress"
+        android:text="@string/reset_progress"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
         android:padding="10dp"
         style="@style/ButtonDesign"
         android:backgroundTint="#B30000"
-        android:text="quit phase overview"
+        android:text="@string/quit_phase_overview"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,8 +92,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:text="money saved:"
-            android:textSize="20dp" />
+            android:text="@string/so_far_you_saved"
+            android:textSize="20sp" />
 
     </com.furkanakdemir.surroundcardview.SurroundCardView>
 
@@ -107,32 +107,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <FrameLayout-->
-<!--        android:id="@+id/smoker_future_data"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingTop="10dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/dummy_layout2"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/dummy_layout" />-->
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/dummy_layout2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/dummy_layout" />-->
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/smoker_past_data"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/dummy_layout2" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

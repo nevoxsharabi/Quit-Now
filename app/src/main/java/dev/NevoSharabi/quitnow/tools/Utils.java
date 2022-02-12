@@ -39,8 +39,6 @@ public class Utils {
             svc.surround();
     }
 
-    //====================================================
-
 
     public void myStartActivity(Activity activity, Class activityClass){
         Intent intent   = new Intent(activity, activityClass);

@@ -1,39 +1,27 @@
-package dev.NevoSharabi.quitnow;
+package dev.NevoSharabi.quitnow.tools;
 
 import android.animation.Animator;
-import android.content.Intent;
-import android.graphics.Color;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
-import dev.NevoSharabi.quitnow.tools.Utils;
+import dev.NevoSharabi.quitnow.MainActivity;
+import dev.NevoSharabi.quitnow.R;
 
 
 public class ActivitySplash extends AppCompatActivity {
-
-    private final int ANIMATION_DURATION = 5000;
-    private ImageView splash_IMG_logo;
-
-    private ProgressBar progressBar;
-
-    //====================================================
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        splash_IMG_logo = findViewById(R.id.splash_IMG_logo);
-        progressBar = findViewById(R.id.loading_bar);
-        progressBar.getIndeterminateDrawable()
-                .setColorFilter(Color.parseColor("#FFFFFFFF"),
-                                android.graphics.PorterDuff.Mode.SRC_ATOP);
-
+        ImageView splash_IMG_logo = findViewById(R.id.splash_IMG_logo);
         showView(splash_IMG_logo);
     }
 
@@ -44,6 +32,7 @@ public class ActivitySplash extends AppCompatActivity {
         view.setScaleY(0.0f);
         view.setAlpha(0.0f);
 
+        int ANIMATION_DURATION = 4000;
         view.animate()
                 .alpha(1.0f)
                 .scaleY(1.0f)

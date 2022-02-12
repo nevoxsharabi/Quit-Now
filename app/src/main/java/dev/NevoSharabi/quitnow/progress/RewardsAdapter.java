@@ -23,8 +23,6 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.RewardsV
     private View                    view;
     private List<Reward>            rewards;
 
-    //====================================================
-
     public RewardsAdapter(List<Reward> rewards){ this.rewards = rewards; }
 
     //====================================================
